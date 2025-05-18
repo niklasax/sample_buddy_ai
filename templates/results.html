@@ -1,0 +1,356 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>Classification Results</h2>
+            </div>
+            <div class="card-body">
+                <div id="processing-section" class="mb-4">
+                    <h3>Processing Status</h3>
+                    
+                    <!-- Overall Progress -->
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Overall Progress:</span>
+                            <span id="progress-counter">0 / {{ job.total_files }}</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Batch Progress -->
+                    <div class="mb-2" id="batch-progress-container" style="display: none;">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Current Batch:</span>
+                            <span id="batch-counter">0 / 0</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div id="batch-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Processing details -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="card bg-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Processing Details</h5>
+                                    <ul class="list-group list-group-flush bg-dark">
+                                        <li class="list-group-item bg-dark">Mode: <span class="badge {{ 'bg-warning' if job.use_deep else 'bg-info' }}">{{ 'Deep Analysis' if job.use_deep else 'Quick Analysis' }}</span></li>
+                                        <li class="list-group-item bg-dark">Batch Size: <span id="batch-size-display">{{ job.batch_size }}</span></li>
+                                        <li class="list-group-item bg-dark">Workers: <span id="workers-display">{{ job.max_workers }}</span></li>
+                                        <li class="list-group-item bg-dark">Start Time: <span id="start-time">{{ job.started_at }}</span></li>
+                                        <li class="list-group-item bg-dark">Elapsed: <span id="elapsed-time">0s</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Status</h5>
+                                    <p id="status-message" class="card-text">Initializing classification process...</p>
+                                    <div id="start-button-container" class="mt-3">
+                                        <button id="start-classification" class="btn btn-primary">Start Classification</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="results-container" class="d-none">
+                    <h3>Classified Samples</h3>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Subtype</th>
+                                    <th>Mood</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-table">
+                                <!-- Results will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div id="json-results" class="d-none mt-4">
+                    <h3>Raw JSON Results</h3>
+                    <pre id="json-display" class="bg-dark text-light p-3" style="max-height: 400px; overflow-y: auto;"></pre>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary me-2">Back to Home</a>
+                    <form action="{{ url_for('clear_samples') }}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Clear Samples</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const startBtn = document.getElementById('start-classification');
+        const progressBar = document.getElementById('progress-bar');
+        const statusMessage = document.getElementById('status-message');
+        const resultsContainer = document.getElementById('results-container');
+        const resultsTable = document.getElementById('results-table');
+        const jsonResults = document.getElementById('json-results');
+        const jsonDisplay = document.getElementById('json-display');
+        
+        let pollInterval;
+        
+        // Start classification when button is clicked
+        startBtn.addEventListener('click', function() {
+            startBtn.disabled = true;
+            startBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+            
+            // Start classification via AJAX
+            fetch('{{ url_for("start_classification") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Start polling for progress
+                    pollInterval = setInterval(checkProgress, 500);
+                } else {
+                    statusMessage.textContent = 'Error: ' + (data.error || 'Unknown error occurred');
+                    startBtn.disabled = false;
+                    startBtn.innerHTML = 'Retry Classification';
+                }
+            })
+            .catch(error => {
+                statusMessage.textContent = 'Error: ' + error.message;
+                startBtn.disabled = false;
+                startBtn.innerHTML = 'Retry Classification';
+            });
+        });
+        
+        // Track start time for elapsed timer
+        let startTimestamp = null;
+        const progressCounter = document.getElementById('progress-counter');
+        const batchProgressContainer = document.getElementById('batch-progress-container');
+        const batchCounter = document.getElementById('batch-counter');
+        const batchProgressBar = document.getElementById('batch-progress-bar');
+        const elapsedTimeDisplay = document.getElementById('elapsed-time');
+        const batchSizeDisplay = document.getElementById('batch-size-display');
+        const workersDisplay = document.getElementById('workers-display');
+        
+        // Format time duration in seconds to human-readable format
+        function formatElapsedTime(seconds) {
+            if (seconds < 60) {
+                return `${seconds.toFixed(1)}s`;
+            } else if (seconds < 3600) {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return `${minutes}m ${remainingSeconds.toFixed(0)}s`;
+            } else {
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                return `${hours}h ${minutes}m`;
+            }
+        }
+        
+        // Update elapsed time counter
+        function updateElapsedTime() {
+            if (startTimestamp) {
+                const now = new Date();
+                const elapsedSeconds = (now - startTimestamp) / 1000;
+                elapsedTimeDisplay.textContent = formatElapsedTime(elapsedSeconds);
+            }
+        }
+        
+        // Poll for progress updates
+        function checkProgress() {
+            fetch('{{ url_for("classification_status") }}')
+            .then(response => response.json())
+            .then(data => {
+                // Start the timer if this is the first update and we're running
+                if (data.running && !startTimestamp) {
+                    startTimestamp = new Date();
+                    // Start elapsed time counter
+                    setInterval(updateElapsedTime, 1000);
+                }
+                
+                // Update batch processing info if available
+                if (data.batch_size) {
+                    batchSizeDisplay.textContent = data.batch_size;
+                }
+                if (data.max_workers) {
+                    workersDisplay.textContent = data.max_workers;
+                }
+                
+                // Update overall progress
+                const progress = data.overall_progress || 0;
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = progress.toFixed(1) + '%';
+                progressBar.setAttribute('aria-valuenow', progress);
+                
+                // Update processed files counter
+                if (data.total_files && data.processed_files !== undefined) {
+                    progressCounter.textContent = `${data.processed_files} / ${data.total_files}`;
+                }
+                
+                // Update batch information if available
+                if (data.batches && data.batches.total > 0) {
+                    batchProgressContainer.style.display = 'block';
+                    batchCounter.textContent = `${data.batches.current} / ${data.batches.total}`;
+                    
+                    const batchProgress = data.batches.progress || 0;
+                    batchProgressBar.style.width = batchProgress + '%';
+                    batchProgressBar.textContent = batchProgress.toFixed(1) + '%';
+                    batchProgressBar.setAttribute('aria-valuenow', batchProgress);
+                }
+                
+                // Update status message
+                statusMessage.textContent = data.message || 'Processing...';
+                
+                // Check if the message contains completion keywords
+                const isCompleteMessage = (data.message || '').includes('Classification complete');
+                
+                // If process is complete (either by status flag or completion message), get the results
+                if ((!data.running && progress >= 99) || isCompleteMessage) {
+                    console.log("Classification process complete, fetching results...");
+                    clearInterval(pollInterval);
+                    fetchResults();
+                }
+            })
+            .catch(error => {
+                statusMessage.textContent = 'Error checking progress: ' + error.message;
+            });
+        }
+        
+        // Fetch classification results
+        function fetchResults() {
+            fetch('{{ url_for("classification_results") }}')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show results
+                    displayResults(data);
+                } else {
+                    statusMessage.textContent = 'Error: ' + (data.error || 'Failed to get results');
+                    startBtn.disabled = false;
+                    startBtn.innerHTML = 'Retry Classification';
+                }
+            })
+            .catch(error => {
+                statusMessage.textContent = 'Error fetching results: ' + error.message;
+                startBtn.disabled = false;
+                startBtn.innerHTML = 'Retry Classification';
+            });
+        }
+        
+        // Display results in the table
+        function displayResults(data) {
+            console.log("Displaying results:", data);
+            
+            // Clear previous results
+            resultsTable.innerHTML = '';
+            
+            // Add each sample to the table
+            if (data.samples && data.samples.length > 0) {
+                data.samples.forEach(sample => {
+                    try {
+                        const row = document.createElement('tr');
+                        
+                        // Name column
+                        const nameCell = document.createElement('td');
+                        nameCell.textContent = sample.name || 'Unknown';
+                        row.appendChild(nameCell);
+                        
+                        // Category column
+                        const categoryCell = document.createElement('td');
+                        categoryCell.textContent = sample.category || 'Unknown';
+                        row.appendChild(categoryCell);
+                        
+                        // Subtype column
+                        const subtypeCell = document.createElement('td');
+                        subtypeCell.textContent = sample.subtype || '-';
+                        row.appendChild(subtypeCell);
+                        
+                        // Mood column
+                        const moodCell = document.createElement('td');
+                        moodCell.textContent = sample.mood || '-';
+                        row.appendChild(moodCell);
+                        
+                        // Details column
+                        const detailsCell = document.createElement('td');
+                        if (sample.features || sample.mood_details) {
+                            const detailsBtn = document.createElement('button');
+                            detailsBtn.className = 'btn btn-sm btn-info';
+                            detailsBtn.textContent = 'View Details';
+                            detailsBtn.addEventListener('click', () => {
+                                // Display details in a modal or expand the row
+                                alert(JSON.stringify(sample, null, 2));
+                            });
+                            detailsCell.appendChild(detailsBtn);
+                        } else {
+                            detailsCell.textContent = 'No details available';
+                        }
+                        row.appendChild(detailsCell);
+                        
+                        resultsTable.appendChild(row);
+                    } catch (err) {
+                        console.error("Error rendering sample:", err, sample);
+                    }
+                });
+                
+                // Show the results container
+                resultsContainer.classList.remove('d-none');
+                
+                // Show raw JSON
+                jsonDisplay.textContent = JSON.stringify(data, null, 2);
+                jsonResults.classList.remove('d-none');
+                
+                // Update status message
+                statusMessage.textContent = `Classification complete! ${data.samples.length} files processed.`;
+            } else if (data.stats && data.stats.processed_files > 0) {
+                // Special case: We have stats but no samples (deep classifier might be producing this)
+                statusMessage.textContent = `Classification complete! ${data.stats.processed_files} files processed.`;
+                
+                // Show raw JSON to help debugging
+                jsonDisplay.textContent = JSON.stringify(data, null, 2);
+                jsonResults.classList.remove('d-none');
+                
+                // Add a note about no samples being displayed
+                const emptyRow = document.createElement('tr');
+                const messageCell = document.createElement('td');
+                messageCell.colSpan = 5;
+                messageCell.textContent = 'Classification completed but no samples data was found. Check the JSON output below for details.';
+                messageCell.style.textAlign = 'center';
+                emptyRow.appendChild(messageCell);
+                resultsTable.appendChild(emptyRow);
+                
+                // Show the results container
+                resultsContainer.classList.remove('d-none');
+            } else {
+                statusMessage.textContent = 'No samples were processed.';
+            }
+        }
+        
+        // Auto-start classification if that option was selected
+        if (localStorage.getItem('autoStartClassification') === 'true') {
+            localStorage.removeItem('autoStartClassification');
+            startBtn.click();
+        }
+    });
+</script>
+{% endblock %}

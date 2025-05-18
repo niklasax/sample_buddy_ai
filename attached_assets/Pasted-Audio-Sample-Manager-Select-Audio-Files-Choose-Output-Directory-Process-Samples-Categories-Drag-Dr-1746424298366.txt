@@ -1,0 +1,23 @@
+Audio Sample Manager
+Select Audio Files
+Choose Output Directory
+Process Samples
+Categories
+Drag & Drop Audio Files Here
+Or use the "Select Audio Files" button above
+
+KMRBI_RHS5_130_drum_fill_reverse.wav
+✕
+KMRBI_RHS5_snare_one_shot_best.wav
+✕
+KUURO_animal_fx_01_bird_chirp (1).wav
+✕
+KUURO_animal_fx_01_bird_chirp.wav
+✕
+RKU_MT_140_vocal_chop_loop_pressure.wav
+✕
+RKU_MT_140_vocal_hook_loop_finger_on_the_trigger.wav
+✕
+RKU_VPE_130_vocal_chop_loop_sugar (1).wav
+✕
+Error: Python script exited with code 1. Error: 2025-05-05 00:50:27,609 - __main__ - INFO - Processing 7 audio files 2025-05-05 00:50:27,609 - __main__ - INFO - Processing file: KMRBI_RHS5_130_drum_fill_reverse.wav /Users/niklasax/Documents/sample_manager_app/electron-audio-manager/python/classify_audio.py:135: FutureWarning: librosa.beat.tempo This function was moved to 'librosa.feature.rhythm.tempo' in librosa version 0.10.0. This alias will be removed in librosa version 1.0. tempo = librosa.beat.tempo(onset_envelope=onset_env, sr=sr)[0] 2025-05-05 00:50:46,462 - __main__ - INFO - Processing file: KMRBI_RHS5_snare_one_shot_best.wav 2025-05-05 00:50:46,471 - __main__ - INFO - Processing file: KUURO_animal_fx_01_bird_chirp (1).wav 2025-05-05 00:50:46,513 - __main__ - INFO - Processing file: KUURO_animal_fx_01_bird_chirp.wav 2025-05-05 00:50:46,556 - __main__ - INFO - Processing file: RKU_MT_140_vocal_chop_loop_pressure.wav 2025-05-05 00:50:46,601 - __main__ - INFO - Processing file: RKU_MT_140_vocal_hook_loop_finger_on_the_trigger.wav 2025-05-05 00:50:46,643 - __main__ - INFO - Processing file: RKU_VPE_130_vocal_chop_loop_sugar (1).wav /Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning super()._check_params_vs_input(X, default_n_init=10) 2025-05-05 00:50:46,789 - __main__ - INFO - Classification complete 2025-05-05 00:50:46,790 - __main__ - INFO - Copied KMRBI_RHS5_130_drum_fill_reverse.wav to ambient/neutral 2025-05-05 00:50:46,790 - __main__ - INFO - Copied KMRBI_RHS5_snare_one_shot_best.wav to percussion/neutral 2025-05-05 00:50:46,791 - __main__ - INFO - Copied KUURO_animal_fx_01_bird_chirp (1).wav to vocal/neutral 2025-05-05 00:50:46,792 - __main__ - INFO - Copied KUURO_animal_fx_01_bird_chirp.wav to vocal/neutral 2025-05-05 00:50:46,792 - __main__ - INFO - Copied RKU_MT_140_vocal_chop_loop_pressure.wav to bass/neutral 2025-05-05 00:50:46,793 - __main__ - INFO - Copied RKU_MT_140_vocal_hook_loop_finger_on_the_trigger.wav to bass/neutral 2025-05-05 00:50:46,795 - __main__ - INFO - Copied RKU_VPE_130_vocal_chop_loop_sugar (1).wav to percussion/neutral

@@ -1,0 +1,51 @@
+{
+  "file_name": "AI_Cerberus_-_Tonal_Hit_-_Threads_of_Time.wav",
+  "category": "other",
+  "mood": "chill",
+  "features": {
+    "duration": 30.809729166666667,
+    "sample_rate": 48000,
+    "energy_mean": 0.05231767147779465,
+    "energy_std": 0.06508691608905792,
+    "energy_max": 0.3622024655342102,
+    "energy_dynamic_range": 6.921815079960352,
+    "avg_centroid": 484.0507298319066,
+    "avg_bandwidth": 616.3153606691342,
+    "avg_contrast": 18.983418335576697,
+    "avg_flatness": 1.7066539612642373e-06,
+    "avg_rolloff": 798.3839563862929,
+    "tempo": 127.8409090909091,
+    "onset_rate": 0.5193164767352304,
+    "mfcc1": -419.5467224121094,
+    "mfcc2": 130.5072021484375,
+    "mfcc3": 44.65668487548828,
+    "mfcc4": 9.452399253845215,
+    "mfcc5": 8.750700950622559,
+    "attack_time": 0.0,
+    "has_transient": true,
+    "is_sustained": false,
+    "avg_zcr": 0.014803254261855314,
+    "harmonic_percussive_ratio": 14.285330772399902,
+    "brightness": 0.020168780409662777,
+    "roughness": -17.983418335576697,
+    "sub_bass_ratio": 0.003859206335619092,
+    "bass_ratio": 0.01721149869263172,
+    "low_mid_ratio": 0.023210881277918816,
+    "mid_ratio": 0.10611598193645477,
+    "upper_mid_ratio": 0.0971914604306221,
+    "high_ratio": 0.5451465249061584
+  },
+  "mood_details": {
+    "energy_value": 0.52,
+    "energy": "chill",
+    "brightness_value": 0.64,
+    "brightness": "dark",
+    "texture_value": -18.98,
+    "texture": "smooth",
+    "overall_mood": [
+      "chill",
+      "dark",
+      "sad"
+    ]
+  }
+}

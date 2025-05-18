@@ -1,0 +1,300 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Audio Sample Classifier - Natural Language Search</title>
+    <style>
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            background-color: rgba(40, 40, 40, 0.6);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .sample-card {
+            background-color: rgba(30, 30, 30, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .sample-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .results-container {
+            min-height: 200px;
+        }
+        
+        .search-examples {
+            background-color: rgba(40, 40, 40, 0.6);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .example-query {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .example-query:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Natural Language Sample Search</h1>
+            </div>
+            <div class="card-body">
+                <div class="search-container">
+                    <div class="search-box">
+                        <h4><i class="fas fa-lightbulb"></i> Describe the sound you're looking for</h4>
+                        <p class="text-muted">Use natural language to describe the type of audio sample you want to find.</p>
+                        
+                        <div class="input-group mb-3">
+                            <input type="text" id="search-input" class="form-control form-control-lg bg-dark text-light" 
+                                   placeholder="e.g., sharp percussive sounds with high energy">
+                            <button class="btn btn-primary btn-lg" type="button" id="search-button">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                        
+                        <div class="search-examples">
+                            <h5>Example queries:</h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-2">
+                                    <div class="example-query badge bg-secondary text-wrap p-2" data-query="punchy kick drums with lots of bass">
+                                        punchy kick drums with lots of bass
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="example-query badge bg-secondary text-wrap p-2" data-query="atmospheric pads for ambient music">
+                                        atmospheric pads for ambient music
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="example-query badge bg-secondary text-wrap p-2" data-query="bright and energetic percussion loops">
+                                        bright and energetic percussion loops
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="example-query badge bg-secondary text-wrap p-2" data-query="dark and mysterious sound effects">
+                                        dark and mysterious sound effects
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="example-query badge bg-secondary text-wrap p-2" data-query="short snare samples with high attack">
+                                        short snare samples with high attack
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-2">
+                                    <div class="example-query badge bg-secondary text-wrap p-2" data-query="melodic synth leads with medium tempo">
+                                        melodic synth leads with medium tempo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="loading-indicator" class="text-center d-none">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Searching samples...</p>
+                    </div>
+                    
+                    <div id="results-container" class="results-container">
+                        <div class="text-center text-muted">
+                            <i class="fas fa-search fa-3x mb-3"></i>
+                            <p>Enter a search query to find audio samples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+<script src="{{ url_for('static', filename='js/audio_player.js') }}"></script>
+<script>
+    let currentSound = null;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const resultsContainer = document.getElementById('results-container');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        
+        // Handle search button click
+        searchButton.addEventListener('click', function() {
+            performSearch(searchInput.value);
+        });
+        
+        // Handle Enter key press
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+        });
+        
+        // Handle example query clicks
+        const exampleQueries = document.querySelectorAll('.example-query');
+        exampleQueries.forEach(query => {
+            query.addEventListener('click', function() {
+                const queryText = this.getAttribute('data-query');
+                searchInput.value = queryText;
+                performSearch(queryText);
+            });
+        });
+        
+        function performSearch(query) {
+            if (!query.trim()) {
+                return;
+            }
+            
+            // Show loading indicator
+            loadingIndicator.classList.remove('d-none');
+            resultsContainer.innerHTML = '';
+            
+            // Perform search
+            fetch('/api/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide loading indicator
+                loadingIndicator.classList.add('d-none');
+                
+                // Display results
+                displayResults(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Hide loading indicator
+                loadingIndicator.classList.add('d-none');
+                
+                // Show error message
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        Error performing search. Please try again later.
+                    </div>
+                `;
+            });
+        }
+        
+        function displayResults(data) {
+            if (data.error) {
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        ${data.error}
+                    </div>
+                `;
+                return;
+            }
+            
+            const results = data.results || [];
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="text-center text-muted">
+                        <i class="fas fa-search fa-3x mb-3"></i>
+                        <p>No matching samples found. Try a different search query.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Display results
+            let resultsHtml = `
+                <h4><i class="fas fa-list"></i> Search Results (${results.length})</h4>
+                <div class="row">
+            `;
+            
+            results.forEach(sample => {
+                resultsHtml += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card sample-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">${sample.name}</h5>
+                                <div class="mb-2">
+                                    <span class="badge bg-primary">${sample.category}</span>
+                                    <span class="badge bg-secondary">${sample.mood}</span>
+                                </div>
+                                <p class="card-text">
+                                    <small>
+                                        Duration: ${sample.features.duration ? sample.features.duration.toFixed(2) + 's' : 'N/A'}<br>
+                                        Tempo: ${sample.features.tempo ? sample.features.tempo.toFixed(1) + ' BPM' : 'N/A'}
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="card-footer bg-transparent border-top-0">
+                                <button class="btn btn-sm btn-outline-primary play-btn" data-path="${sample.path}">
+                                    <i class="fas fa-play"></i> Play
+                                </button>
+                                <button class="btn btn-sm btn-outline-info sample-details-btn" data-id="${sample.id}">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsHtml += '</div>';
+            resultsContainer.innerHTML = resultsHtml;
+            
+            // Add event listeners to play buttons
+            const playButtons = document.querySelectorAll('.play-btn');
+            playButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const path = this.getAttribute('data-path');
+                    playAudio(path, button);
+                });
+            });
+        }
+        
+        function playAudio(path, button) {
+            if (currentSound) {
+                currentSound.stop();
+                
+                // Reset all play buttons
+                document.querySelectorAll('.play-btn').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-play"></i> Play';
+                });
+            }
+            
+            // Update button text
+            button.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            
+            currentSound = new Howl({
+                src: ['/static/audio.mp3'], // This would normally be the path, but we can't serve audio files directly
+                html5: true,
+                onend: function() {
+                    button.innerHTML = '<i class="fas fa-play"></i> Play';
+                }
+            });
+            
+            currentSound.play();
+        }
+    });
+</script>
+{% endblock %}

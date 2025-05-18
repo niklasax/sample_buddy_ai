@@ -1,0 +1,211 @@
++ echo -e '\033[0;32m=== Sample Buddy AI - Environment Setup ===\033[0m'
+[0;32m=== Sample Buddy AI - Environment Setup ===[0m
++ echo -e '\033[1;33mSetting up environment. This may take a few minutes.\033[0m'
+[1;33mSetting up environment. This may take a few minutes.[0m
++ echo 'OS Type: mac'
+OS Type: mac
++ echo 'Log file: logs/setup_20250515_233103.log'
+Log file: logs/setup_20250515_233103.log
++ echo -e '\033[0;32mChecking Python version...\033[0m'
+[0;32mChecking Python version...[0m
++ command -v python3.11
++ PYTHON_CMD=python3.11
+++ which python3.11
++ echo 'Python 3.11 found at: /usr/local/opt/python@3.11/bin/python3.11'
+Python 3.11 found at: /usr/local/opt/python@3.11/bin/python3.11
++ python3.11 --version
+Python 3.11.12
++ echo -e '\033[0;32mSetting up Python virtual environment...\033[0m'
+[0;32mSetting up Python virtual environment...[0m
++ '[' -d venv ']'
++ python3.11 -m venv venv
++ echo 'Virtual environment created'
+Virtual environment created
++ '[' mac = windows ']'
++ source venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/Users/niklasax/Documents/Sample-Buddy-AI/venv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Users/niklasax/opt/anaconda3/envs/py311/bin:/Users/niklasax/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.7/bin
+++ PATH=/Users/niklasax/Documents/Sample-Buddy-AI/venv/bin:/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Users/niklasax/opt/anaconda3/envs/py311/bin:/Users/niklasax/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.7/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ echo 'Virtual environment activated: /Users/niklasax/Documents/Sample-Buddy-AI/venv'
+Virtual environment activated: /Users/niklasax/Documents/Sample-Buddy-AI/venv
++ echo -e '\033[0;32mUpgrading pip...\033[0m'
+[0;32mUpgrading pip...[0m
++ python -m pip install --upgrade pip
+Requirement already satisfied: pip in ./venv/lib/python3.11/site-packages (25.0.1)
+Collecting pip
+  Using cached pip-25.1.1-py3-none-any.whl.metadata (3.6 kB)
+Using cached pip-25.1.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.0.1
+    Uninstalling pip-25.0.1:
+      Successfully uninstalled pip-25.0.1
+Successfully installed pip-25.1.1
++ echo -e '\033[0;32mInstalling Python dependencies...\033[0m'
+[0;32mInstalling Python dependencies...[0m
++ python -m pip install -r electron-audio-manager/requirements.txt
+Collecting numpy>=1.20.0 (from -r electron-audio-manager/requirements.txt (line 1))
+  Using cached numpy-2.2.5-cp311-cp311-macosx_14_0_x86_64.whl.metadata (62 kB)
+Collecting librosa>=0.10.0 (from -r electron-audio-manager/requirements.txt (line 2))
+  Using cached librosa-0.11.0-py3-none-any.whl.metadata (8.7 kB)
+Collecting soundfile>=0.10.0 (from -r electron-audio-manager/requirements.txt (line 3))
+  Using cached soundfile-0.13.1-py2.py3-none-macosx_10_9_x86_64.whl.metadata (16 kB)
+Collecting scipy>=1.7.0 (from -r electron-audio-manager/requirements.txt (line 4))
+  Using cached scipy-1.15.3-cp311-cp311-macosx_14_0_x86_64.whl.metadata (61 kB)
+Collecting matplotlib>=3.5.0 (from -r electron-audio-manager/requirements.txt (line 5))
+  Using cached matplotlib-3.10.3-cp311-cp311-macosx_10_12_x86_64.whl.metadata (11 kB)
+Collecting scikit-learn>=1.0.0 (from -r electron-audio-manager/requirements.txt (line 6))
+  Using cached scikit_learn-1.6.1-cp311-cp311-macosx_10_9_x86_64.whl.metadata (31 kB)
+Collecting numba>=0.55.0 (from -r electron-audio-manager/requirements.txt (line 7))
+  Using cached numba-0.61.2-cp311-cp311-macosx_10_14_x86_64.whl.metadata (2.8 kB)
+Collecting audioread>=2.1.9 (from -r electron-audio-manager/requirements.txt (line 8))
+  Using cached audioread-3.0.1-py3-none-any.whl.metadata (8.4 kB)
+Collecting joblib>=1.1.0 (from -r electron-audio-manager/requirements.txt (line 9))
+  Using cached joblib-1.5.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting tqdm>=4.62.0 (from -r electron-audio-manager/requirements.txt (line 10))
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting pooch>=1.5.0 (from -r electron-audio-manager/requirements.txt (line 11))
+  Using cached pooch-1.8.2-py3-none-any.whl.metadata (10 kB)
+Collecting resampy>=0.3.1 (from -r electron-audio-manager/requirements.txt (line 12))
+  Using cached resampy-0.4.3-py3-none-any.whl.metadata (3.0 kB)
+Collecting threadpoolctl>=3.0.0 (from -r electron-audio-manager/requirements.txt (line 13))
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting decorator>=5.1.0 (from -r electron-audio-manager/requirements.txt (line 14))
+  Using cached decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting typing-extensions>=4.0.0 (from -r electron-audio-manager/requirements.txt (line 15))
+  Using cached typing_extensions-4.13.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting kiwisolver>=1.3.0 (from -r electron-audio-manager/requirements.txt (line 16))
+  Using cached kiwisolver-1.4.8-cp311-cp311-macosx_10_9_x86_64.whl.metadata (6.2 kB)
+Collecting pyparsing>=3.0.0 (from -r electron-audio-manager/requirements.txt (line 17))
+  Using cached pyparsing-3.2.3-py3-none-any.whl.metadata (5.0 kB)
+Collecting cycler>=0.11.0 (from -r electron-audio-manager/requirements.txt (line 18))
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.25.0 (from -r electron-audio-manager/requirements.txt (line 19))
+  Using cached fonttools-4.58.0-cp311-cp311-macosx_10_9_x86_64.whl.metadata (104 kB)
+Collecting packaging>=21.0 (from -r electron-audio-manager/requirements.txt (line 20))
+  Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pillow>=9.0.0 (from -r electron-audio-manager/requirements.txt (line 21))
+  Using cached pillow-11.2.1-cp311-cp311-macosx_10_10_x86_64.whl.metadata (8.9 kB)
+Collecting python-dateutil>=2.8.0 (from -r electron-audio-manager/requirements.txt (line 22))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting contourpy>=1.0.0 (from -r electron-audio-manager/requirements.txt (line 23))
+  Using cached contourpy-1.3.2-cp311-cp311-macosx_10_9_x86_64.whl.metadata (5.5 kB)
+Collecting llvmlite>=0.38.0 (from -r electron-audio-manager/requirements.txt (line 24))
+  Using cached llvmlite-0.44.0-cp311-cp311-macosx_10_14_x86_64.whl.metadata (4.8 kB)
+Collecting soxr>=0.3.2 (from librosa>=0.10.0->-r electron-audio-manager/requirements.txt (line 2))
+  Using cached soxr-0.5.0.post1-cp311-cp311-macosx_10_14_x86_64.whl.metadata (5.6 kB)
+Collecting lazy_loader>=0.1 (from librosa>=0.10.0->-r electron-audio-manager/requirements.txt (line 2))
+  Using cached lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Collecting msgpack>=1.0 (from librosa>=0.10.0->-r electron-audio-manager/requirements.txt (line 2))
+  Using cached msgpack-1.1.0-cp311-cp311-macosx_10_9_x86_64.whl.metadata (8.4 kB)
+Collecting cffi>=1.0 (from soundfile>=0.10.0->-r electron-audio-manager/requirements.txt (line 3))
+  Using cached cffi-1.17.1-cp311-cp311-macosx_10_9_x86_64.whl.metadata (1.5 kB)
+Collecting platformdirs>=2.5.0 (from pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11))
+  Using cached platformdirs-4.3.8-py3-none-any.whl.metadata (12 kB)
+Collecting requests>=2.19.0 (from pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11))
+  Using cached requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.0->-r electron-audio-manager/requirements.txt (line 22))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting pycparser (from cffi>=1.0->soundfile>=0.10.0->-r electron-audio-manager/requirements.txt (line 3))
+  Using cached pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Collecting charset-normalizer<4,>=2 (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11))
+  Using cached charset_normalizer-3.4.2-cp311-cp311-macosx_10_9_universal2.whl.metadata (35 kB)
+Collecting idna<4,>=2.5 (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11))
+  Using cached idna-3.10-py3-none-any.whl.metadata (10 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11))
+  Using cached urllib3-2.4.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11))
+  Using cached certifi-2025.4.26-py3-none-any.whl.metadata (2.5 kB)
+Using cached numpy-2.2.5-cp311-cp311-macosx_14_0_x86_64.whl (7.0 MB)
+Using cached librosa-0.11.0-py3-none-any.whl (260 kB)
+Using cached soundfile-0.13.1-py2.py3-none-macosx_10_9_x86_64.whl (1.1 MB)
+Using cached scipy-1.15.3-cp311-cp311-macosx_14_0_x86_64.whl (25.2 MB)
+Using cached matplotlib-3.10.3-cp311-cp311-macosx_10_12_x86_64.whl (8.2 MB)
+Using cached scikit_learn-1.6.1-cp311-cp311-macosx_10_9_x86_64.whl (12.1 MB)
+Using cached numba-0.61.2-cp311-cp311-macosx_10_14_x86_64.whl (2.8 MB)
+Using cached llvmlite-0.44.0-cp311-cp311-macosx_10_14_x86_64.whl (28.1 MB)
+Using cached audioread-3.0.1-py3-none-any.whl (23 kB)
+Using cached joblib-1.5.0-py3-none-any.whl (307 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Using cached pooch-1.8.2-py3-none-any.whl (64 kB)
+Using cached resampy-0.4.3-py3-none-any.whl (3.1 MB)
+Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Using cached decorator-5.2.1-py3-none-any.whl (9.2 kB)
+Using cached typing_extensions-4.13.2-py3-none-any.whl (45 kB)
+Using cached kiwisolver-1.4.8-cp311-cp311-macosx_10_9_x86_64.whl (66 kB)
+Using cached pyparsing-3.2.3-py3-none-any.whl (111 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached fonttools-4.58.0-cp311-cp311-macosx_10_9_x86_64.whl (2.3 MB)
+Using cached packaging-25.0-py3-none-any.whl (66 kB)
+Using cached pillow-11.2.1-cp311-cp311-macosx_10_10_x86_64.whl (3.2 MB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached contourpy-1.3.2-cp311-cp311-macosx_10_9_x86_64.whl (269 kB)
+Using cached cffi-1.17.1-cp311-cp311-macosx_10_9_x86_64.whl (182 kB)
+Using cached lazy_loader-0.4-py3-none-any.whl (12 kB)
+Using cached msgpack-1.1.0-cp311-cp311-macosx_10_9_x86_64.whl (84 kB)
+Using cached platformdirs-4.3.8-py3-none-any.whl (18 kB)
+Using cached requests-2.32.3-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.2-cp311-cp311-macosx_10_9_universal2.whl (198 kB)
+Using cached idna-3.10-py3-none-any.whl (70 kB)
+Using cached urllib3-2.4.0-py3-none-any.whl (128 kB)
+Using cached certifi-2025.4.26-py3-none-any.whl (159 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached soxr-0.5.0.post1-cp311-cp311-macosx_10_14_x86_64.whl (203 kB)
+Using cached pycparser-2.22-py3-none-any.whl (117 kB)
+Installing collected packages: urllib3, typing-extensions, tqdm, threadpoolctl, six, pyparsing, pycparser, platformdirs, pillow, packaging, numpy, msgpack, llvmlite, kiwisolver, joblib, idna, fonttools, decorator, cycler, charset-normalizer, certifi, audioread, soxr, scipy, requests, python-dateutil, numba, lazy_loader, contourpy, cffi, soundfile, scikit-learn, resampy, pooch, matplotlib, librosa
+
+Successfully installed audioread-3.0.1 certifi-2025.4.26 cffi-1.17.1 charset-normalizer-3.4.2 contourpy-1.3.2 cycler-0.12.1 decorator-5.2.1 fonttools-4.58.0 idna-3.10 joblib-1.5.0 kiwisolver-1.4.8 lazy_loader-0.4 librosa-0.11.0 llvmlite-0.44.0 matplotlib-3.10.3 msgpack-1.1.0 numba-0.61.2 numpy-2.2.5 packaging-25.0 pillow-11.2.1 platformdirs-4.3.8 pooch-1.8.2 pycparser-2.22 pyparsing-3.2.3 python-dateutil-2.9.0.post0 requests-2.32.3 resampy-0.4.3 scikit-learn-1.6.1 scipy-1.15.3 six-1.17.0 soundfile-0.13.1 soxr-0.5.0.post1 threadpoolctl-3.6.0 tqdm-4.67.1 typing-extensions-4.13.2 urllib3-2.4.0
++ echo -e '\033[0;32mInstalling Node.js dependencies...\033[0m'
+[0;32mInstalling Node.js dependencies...[0m
++ command -v npm
++ cd electron-audio-manager
++ npm install
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+
+added 325 packages, and audited 326 packages in 2s
+
+49 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
++ cd ..
++ echo -e '\033[0;32mEnvironment setup complete!\033[0m'
+[0;32mEnvironment setup complete![0m
++ echo -e '\033[1;33mTo activate the environment in the future, run:\033[0m'
+[1;33mTo activate the environment in the future, run:[0m
++ echo 'source venv/bin/activate  # On Linux/macOS'
+source venv/bin/activate  # On Linux/macOS
++ echo 'venv\Scripts\activate     # On Windows'
+venv\Scripts\activate     # On Windows
++ echo ''
+
++ echo -e '\033[1;33mTo run the Electron app with debugging:\033[0m'
+[1;33mTo run the Electron app with debugging:[0m
++ echo 'cd electron-audio-manager'
+cd electron-audio-manager
++ echo 'DEBUG=electron* ./node_modules/.bin/electron .'
+DEBUG=electron* ./node_modules/.bin/electron .
++ echo ''
+
++ echo -e '\033[0;32m===== Setup Complete =====\033[0m'
+[0;32m===== Setup Complete =====[0m

@@ -1,0 +1,123 @@
++ echo -e '\033[0;32m=== Sample Buddy AI - Environment Setup ===\033[0m'
+[0;32m=== Sample Buddy AI - Environment Setup ===[0m
++ echo -e '\033[1;33mSetting up environment. This may take a few minutes.\033[0m'
+[1;33mSetting up environment. This may take a few minutes.[0m
++ echo 'OS Type: mac'
+OS Type: mac
++ echo 'Log file: logs/setup_20250516_001730.log'
+Log file: logs/setup_20250516_001730.log
++ echo -e '\033[0;32mChecking Python version...\033[0m'
+[0;32mChecking Python version...[0m
++ command -v python3.11
++ PYTHON_CMD=python3.11
+++ which python3.11
++ echo 'Python 3.11 found at: /usr/local/opt/python@3.11/bin/python3.11'
+Python 3.11 found at: /usr/local/opt/python@3.11/bin/python3.11
++ python3.11 --version
+Python 3.11.12
++ echo -e '\033[0;32mSetting up Python virtual environment...\033[0m'
+[0;32mSetting up Python virtual environment...[0m
++ '[' -d venv ']'
++ echo 'Virtual environment already exists'
+Virtual environment already exists
++ '[' mac = windows ']'
++ source venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/Users/niklasax/Documents/Sample-Buddy-AI/venv
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Users/niklasax/opt/anaconda3/envs/py311/bin:/Users/niklasax/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.7/bin
+++ PATH=/Users/niklasax/Documents/Sample-Buddy-AI/venv/bin:/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/opt/python@3.11/bin:/Users/niklasax/.nvm/versions/node/v18.20.5/bin:/Users/niklasax/opt/anaconda3/envs/py311/bin:/Users/niklasax/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.7/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ echo 'Virtual environment activated: /Users/niklasax/Documents/Sample-Buddy-AI/venv'
+Virtual environment activated: /Users/niklasax/Documents/Sample-Buddy-AI/venv
++ echo -e '\033[0;32mUpgrading pip...\033[0m'
+[0;32mUpgrading pip...[0m
++ python -m pip install --upgrade pip
+Requirement already satisfied: pip in ./venv/lib/python3.11/site-packages (25.1.1)
++ echo -e '\033[0;32mInstalling Python dependencies...\033[0m'
+[0;32mInstalling Python dependencies...[0m
++ python -m pip install -r electron-audio-manager/requirements.txt
+Requirement already satisfied: numpy>=1.20.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 1)) (2.2.5)
+Requirement already satisfied: librosa>=0.10.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 2)) (0.11.0)
+Requirement already satisfied: soundfile>=0.10.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 3)) (0.13.1)
+Requirement already satisfied: scipy>=1.7.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 4)) (1.15.3)
+Requirement already satisfied: matplotlib>=3.5.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 5)) (3.10.3)
+Requirement already satisfied: scikit-learn>=1.0.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 6)) (1.6.1)
+Requirement already satisfied: numba>=0.55.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 7)) (0.61.2)
+Requirement already satisfied: audioread>=2.1.9 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 8)) (3.0.1)
+Requirement already satisfied: joblib>=1.1.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 9)) (1.5.0)
+Requirement already satisfied: tqdm>=4.62.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 10)) (4.67.1)
+Requirement already satisfied: pooch>=1.5.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 11)) (1.8.2)
+Requirement already satisfied: resampy>=0.3.1 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 12)) (0.4.3)
+Requirement already satisfied: threadpoolctl>=3.0.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 13)) (3.6.0)
+Requirement already satisfied: decorator>=5.1.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 14)) (5.2.1)
+Requirement already satisfied: typing-extensions>=4.0.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 15)) (4.13.2)
+Requirement already satisfied: kiwisolver>=1.3.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 16)) (1.4.8)
+Requirement already satisfied: pyparsing>=3.0.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 17)) (3.2.3)
+Requirement already satisfied: cycler>=0.11.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 18)) (0.12.1)
+Requirement already satisfied: fonttools>=4.25.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 19)) (4.58.0)
+Requirement already satisfied: packaging>=21.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 20)) (25.0)
+Requirement already satisfied: pillow>=9.0.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 21)) (11.2.1)
+Requirement already satisfied: python-dateutil>=2.8.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 22)) (2.9.0.post0)
+Requirement already satisfied: contourpy>=1.0.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 23)) (1.3.2)
+Requirement already satisfied: llvmlite>=0.38.0 in ./venv/lib/python3.11/site-packages (from -r electron-audio-manager/requirements.txt (line 24)) (0.44.0)
+Requirement already satisfied: soxr>=0.3.2 in ./venv/lib/python3.11/site-packages (from librosa>=0.10.0->-r electron-audio-manager/requirements.txt (line 2)) (0.5.0.post1)
+Requirement already satisfied: lazy_loader>=0.1 in ./venv/lib/python3.11/site-packages (from librosa>=0.10.0->-r electron-audio-manager/requirements.txt (line 2)) (0.4)
+Requirement already satisfied: msgpack>=1.0 in ./venv/lib/python3.11/site-packages (from librosa>=0.10.0->-r electron-audio-manager/requirements.txt (line 2)) (1.1.0)
+Requirement already satisfied: cffi>=1.0 in ./venv/lib/python3.11/site-packages (from soundfile>=0.10.0->-r electron-audio-manager/requirements.txt (line 3)) (1.17.1)
+Requirement already satisfied: platformdirs>=2.5.0 in ./venv/lib/python3.11/site-packages (from pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11)) (4.3.8)
+Requirement already satisfied: requests>=2.19.0 in ./venv/lib/python3.11/site-packages (from pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11)) (2.32.3)
+Requirement already satisfied: six>=1.5 in ./venv/lib/python3.11/site-packages (from python-dateutil>=2.8.0->-r electron-audio-manager/requirements.txt (line 22)) (1.17.0)
+Requirement already satisfied: pycparser in ./venv/lib/python3.11/site-packages (from cffi>=1.0->soundfile>=0.10.0->-r electron-audio-manager/requirements.txt (line 3)) (2.22)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./venv/lib/python3.11/site-packages (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11)) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.11/site-packages (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11)) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.11/site-packages (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11)) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.11/site-packages (from requests>=2.19.0->pooch>=1.5.0->-r electron-audio-manager/requirements.txt (line 11)) (2025.4.26)
++ echo -e '\033[0;32mInstalling Node.js dependencies...\033[0m'
+[0;32mInstalling Node.js dependencies...[0m
++ command -v npm
++ cd electron-audio-manager
++ npm install
+
+up to date, audited 326 packages in 534ms
+
+49 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
++ cd ..
++ echo -e '\033[0;32mEnvironment setup complete!\033[0m'
+[0;32mEnvironment setup complete![0m
++ echo -e '\033[1;33mTo activate the environment in the future, run:\033[0m'
+[1;33mTo activate the environment in the future, run:[0m
++ echo 'source venv/bin/activate  # On Linux/macOS'
+source venv/bin/activate  # On Linux/macOS
++ echo 'venv\Scripts\activate     # On Windows'
+venv\Scripts\activate     # On Windows
++ echo ''
+
++ echo -e '\033[1;33mTo run the Electron app with debugging:\033[0m'
+[1;33mTo run the Electron app with debugging:[0m
++ echo 'cd electron-audio-manager'
+cd electron-audio-manager
++ echo 'DEBUG=electron* ./node_modules/.bin/electron .'
+DEBUG=electron* ./node_modules/.bin/electron .
++ echo ''
+
++ echo -e '\033[0;32m===== Setup Complete =====\033[0m'
+[0;32m===== Setup Complete =====[0m

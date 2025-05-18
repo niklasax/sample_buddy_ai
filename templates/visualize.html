@@ -1,0 +1,410 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Audio Sample Classifier - Visualizations</title>
+    <style>
+        .plot-container {
+            background-color: rgba(30, 30, 30, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .viz-tooltip {
+            position: absolute;
+            pointer-events: none;
+            background-color: rgba(20, 20, 20, 0.8);
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10;
+            max-width: 200px;
+        }
+        
+        .axis-label {
+            font-size: 12px;
+            fill: rgba(255, 255, 255, 0.7);
+        }
+        
+        .grid line {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+        
+        .control-panel {
+            background-color: rgba(40, 40, 40, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Interactive Visualizations</h1>
+            </div>
+            <div class="card-body">
+                {% if samples %}
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="control-panel">
+                                <h4>Visualization Controls</h4>
+                                <div class="mb-3">
+                                    <label for="colorBy" class="form-label">Color By</label>
+                                    <select class="form-select bg-dark text-light" id="colorBy">
+                                        <option value="category">Instrument Category</option>
+                                        <option value="mood">Mood</option>
+                                    </select>
+                                </div>
+                                
+                                <h5 class="mt-4">Plot 1 Configuration</h5>
+                                <div class="mb-3">
+                                    <label for="plot1X" class="form-label">X Axis</label>
+                                    <select class="form-select bg-dark text-light" id="plot1X">
+                                        <option value="spectral_centroid">Spectral Centroid</option>
+                                        <option value="zero_crossing_rate">Zero Crossing Rate</option>
+                                        <option value="energy">Energy</option>
+                                        <option value="tempo">Tempo</option>
+                                        <option value="duration">Duration</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="plot1Y" class="form-label">Y Axis</label>
+                                    <select class="form-select bg-dark text-light" id="plot1Y">
+                                        <option value="zero_crossing_rate">Zero Crossing Rate</option>
+                                        <option value="spectral_centroid">Spectral Centroid</option>
+                                        <option value="energy">Energy</option>
+                                        <option value="tempo">Tempo</option>
+                                        <option value="duration">Duration</option>
+                                    </select>
+                                </div>
+                                
+                                <h5 class="mt-4">Plot 2 Configuration</h5>
+                                <div class="mb-3">
+                                    <label for="plot2X" class="form-label">X Axis</label>
+                                    <select class="form-select bg-dark text-light" id="plot2X">
+                                        <option value="energy">Energy</option>
+                                        <option value="spectral_centroid">Spectral Centroid</option>
+                                        <option value="zero_crossing_rate">Zero Crossing Rate</option>
+                                        <option value="tempo">Tempo</option>
+                                        <option value="duration">Duration</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="plot2Y" class="form-label">Y Axis</label>
+                                    <select class="form-select bg-dark text-light" id="plot2Y">
+                                        <option value="tempo">Tempo</option>
+                                        <option value="spectral_centroid">Spectral Centroid</option>
+                                        <option value="zero_crossing_rate">Zero Crossing Rate</option>
+                                        <option value="energy">Energy</option>
+                                        <option value="duration">Duration</option>
+                                    </select>
+                                </div>
+                                
+                                <button id="updatePlots" class="btn btn-primary w-100 mt-3">
+                                    <i class="fas fa-sync-alt"></i> Update Plots
+                                </button>
+                            </div>
+                            
+                            <div class="control-panel mt-4">
+                                <h5>Legend</h5>
+                                <div id="legend-container"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-9">
+                            <div class="plot-container">
+                                <h4 id="plot1-title">Spectral Centroid vs. Zero Crossing Rate</h4>
+                                <div id="plot1"></div>
+                            </div>
+                            
+                            <div class="plot-container">
+                                <h4 id="plot2-title">Energy vs. Tempo</h4>
+                                <div id="plot2"></div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> No processed samples found. Please upload and process audio files first.
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-upload"></i> Upload Audio Files
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/visualizer.js') }}"></script>
+<script>
+    // Sample visualization data
+    let samples = {{ samples|tojson }};
+    let visualizationData = [];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create tooltip div
+        const tooltip = d3.select('body')
+            .append('div')
+            .attr('class', 'viz-tooltip')
+            .style('opacity', 0);
+        
+        // Fetch visualization data
+        fetch('/api/visualization-data')
+            .then(response => response.json())
+            .then(data => {
+                visualizationData = data;
+                
+                // Initial plots
+                createScatterPlot(
+                    'plot1', 
+                    visualizationData, 
+                    'spectral_centroid', 
+                    'zero_crossing_rate', 
+                    'category', 
+                    tooltip
+                );
+                
+                createScatterPlot(
+                    'plot2', 
+                    visualizationData, 
+                    'energy', 
+                    'tempo', 
+                    'category', 
+                    tooltip
+                );
+                
+                updateLegend('category');
+            })
+            .catch(error => {
+                console.error('Error fetching visualization data:', error);
+            });
+        
+        // Update button event
+        document.getElementById('updatePlots').addEventListener('click', updatePlots);
+        
+        // Color by select event
+        document.getElementById('colorBy').addEventListener('change', function() {
+            updateLegend(this.value);
+        });
+    });
+    
+    function updatePlots() {
+        const colorBy = document.getElementById('colorBy').value;
+        
+        // Plot 1
+        const plot1X = document.getElementById('plot1X').value;
+        const plot1Y = document.getElementById('plot1Y').value;
+        
+        // Update plot 1 title
+        document.getElementById('plot1-title').textContent = `${formatAxisLabel(plot1X)} vs. ${formatAxisLabel(plot1Y)}`;
+        
+        // Plot 2
+        const plot2X = document.getElementById('plot2X').value;
+        const plot2Y = document.getElementById('plot2Y').value;
+        
+        // Update plot 2 title
+        document.getElementById('plot2-title').textContent = `${formatAxisLabel(plot2X)} vs. ${formatAxisLabel(plot2Y)}`;
+        
+        // Create tooltip div if it doesn't exist
+        let tooltip = d3.select('body').select('.viz-tooltip');
+        if (tooltip.empty()) {
+            tooltip = d3.select('body')
+                .append('div')
+                .attr('class', 'viz-tooltip')
+                .style('opacity', 0);
+        }
+        
+        // Update plots
+        createScatterPlot('plot1', visualizationData, plot1X, plot1Y, colorBy, tooltip);
+        createScatterPlot('plot2', visualizationData, plot2X, plot2Y, colorBy, tooltip);
+        
+        // Update legend
+        updateLegend(colorBy);
+    }
+    
+    function formatAxisLabel(key) {
+        const labels = {
+            'spectral_centroid': 'Spectral Centroid',
+            'zero_crossing_rate': 'Zero Crossing Rate',
+            'energy': 'Energy',
+            'tempo': 'Tempo (BPM)',
+            'duration': 'Duration (s)'
+        };
+        
+        return labels[key] || key;
+    }
+    
+    function createScatterPlot(containerId, data, xKey, yKey, colorKey, tooltip) {
+        // Clear the container
+        d3.select(`#${containerId}`).html('');
+        
+        // Set up dimensions
+        const margin = {top: 20, right: 30, bottom: 40, left: 50};
+        const width = document.getElementById(containerId).clientWidth - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
+        
+        // Create SVG
+        const svg = d3.select(`#${containerId}`)
+            .append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        // Define scales
+        const x = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d[xKey] * 1.1)])
+            .nice()
+            .range([0, width]);
+        
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d[yKey] * 1.1)])
+            .nice()
+            .range([height, 0]);
+        
+        // Create a map of unique categories/moods
+        const categories = [...new Set(data.map(d => d[colorKey]))];
+        
+        // Color scale
+        const colorScale = d3.scaleOrdinal()
+            .domain(categories)
+            .range(d3.schemeCategory10);
+        
+        // Add grid lines
+        svg.append('g')
+            .attr('class', 'grid')
+            .attr('transform', `translate(0,${height})`)
+            .call(d3.axisBottom(x)
+                .ticks(10)
+                .tickSize(-height)
+                .tickFormat('')
+            );
+        
+        svg.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft(y)
+                .ticks(10)
+                .tickSize(-width)
+                .tickFormat('')
+            );
+        
+        // Add X axis
+        svg.append('g')
+            .attr('transform', `translate(0,${height})`)
+            .call(d3.axisBottom(x))
+            .selectAll('text')
+            .style('fill', 'rgba(255, 255, 255, 0.7)');
+        
+        // Add Y axis
+        svg.append('g')
+            .call(d3.axisLeft(y))
+            .selectAll('text')
+            .style('fill', 'rgba(255, 255, 255, 0.7)');
+        
+        // Add axis labels
+        svg.append('text')
+            .attr('class', 'axis-label')
+            .attr('text-anchor', 'middle')
+            .attr('x', width / 2)
+            .attr('y', height + margin.bottom - 5)
+            .text(formatAxisLabel(xKey));
+        
+        svg.append('text')
+            .attr('class', 'axis-label')
+            .attr('text-anchor', 'middle')
+            .attr('transform', 'rotate(-90)')
+            .attr('x', -height / 2)
+            .attr('y', -margin.left + 15)
+            .text(formatAxisLabel(yKey));
+        
+        // Add dots
+        svg.selectAll('dot')
+            .data(data)
+            .enter()
+            .append('circle')
+            .attr('cx', d => x(d[xKey]))
+            .attr('cy', d => y(d[yKey]))
+            .attr('r', 6)
+            .style('fill', d => colorScale(d[colorKey]))
+            .style('opacity', 0.7)
+            .style('stroke', 'white')
+            .style('stroke-width', 0.5)
+            .on('mouseover', function(event, d) {
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr('r', 8)
+                    .style('opacity', 1);
+                
+                tooltip.transition()
+                    .duration(200)
+                    .style('opacity', 0.9);
+                
+                tooltip.html(`
+                    <strong>${d.name}</strong><br/>
+                    Category: ${d.category}<br/>
+                    Mood: ${d.mood}<br/>
+                    ${formatAxisLabel(xKey)}: ${d[xKey].toFixed(2)}<br/>
+                    ${formatAxisLabel(yKey)}: ${d[yKey].toFixed(2)}
+                `)
+                    .style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 28) + 'px');
+            })
+            .on('mouseout', function() {
+                d3.select(this)
+                    .transition()
+                    .duration(500)
+                    .attr('r', 6)
+                    .style('opacity', 0.7);
+                
+                tooltip.transition()
+                    .duration(500)
+                    .style('opacity', 0);
+            });
+    }
+    
+    function updateLegend(colorKey) {
+        // Clear the legend container
+        const legendContainer = document.getElementById('legend-container');
+        legendContainer.innerHTML = '';
+        
+        // Get unique categories/moods
+        const categories = [...new Set(visualizationData.map(d => d[colorKey]))];
+        
+        // Color scale
+        const colorScale = d3.scaleOrdinal()
+            .domain(categories)
+            .range(d3.schemeCategory10);
+        
+        // Create legend items
+        categories.forEach(category => {
+            const legendItem = document.createElement('div');
+            legendItem.className = 'd-flex align-items-center mb-2';
+            
+            const colorBox = document.createElement('div');
+            colorBox.style.width = '15px';
+            colorBox.style.height = '15px';
+            colorBox.style.backgroundColor = colorScale(category);
+            colorBox.style.marginRight = '8px';
+            colorBox.style.borderRadius = '3px';
+            
+            const label = document.createElement('span');
+            label.textContent = category;
+            
+            legendItem.appendChild(colorBox);
+            legendItem.appendChild(label);
+            legendContainer.appendChild(legendItem);
+        });
+    }
+</script>
+{% endblock %}

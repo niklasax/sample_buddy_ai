@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Audio Sample Classifier - Samples</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h1 class="card-title">Classified Samples</h1>
+                <a href="{{ url_for('index') }}" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Upload More
+                </a>
+            </div>
+            <div class="card-body">
+                {% if categories %}
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                {% for category, moods in categories.items() %}
+                                    <button class="nav-link {% if loop.first %}active{% endif %}" 
+                                            id="v-pills-{{ category|lower|replace(' ', '-') }}-tab" 
+                                            data-bs-toggle="pill" 
+                                            data-bs-target="#v-pills-{{ category|lower|replace(' ', '-') }}" 
+                                            type="button" 
+                                            role="tab" 
+                                            aria-controls="v-pills-{{ category|lower|replace(' ', '-') }}" 
+                                            aria-selected="{% if loop.first %}true{% else %}false{% endif %}">
+                                        {{ category }} <span class="badge bg-primary rounded-pill">{{ moods|length }}</span>
+                                    </button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                {% for category, moods in categories.items() %}
+                                    <div class="tab-pane fade {% if loop.first %}show active{% endif %}" 
+                                         id="v-pills-{{ category|lower|replace(' ', '-') }}" 
+                                         role="tabpanel" 
+                                         aria-labelledby="v-pills-{{ category|lower|replace(' ', '-') }}-tab">
+                                        
+                                        <h3>{{ category }}</h3>
+                                        
+                                        <div class="accordion" id="accordion-{{ category|lower|replace(' ', '-') }}">
+                                            {% for mood, samples in moods.items() %}
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="heading-{{ category|lower }}-{{ mood|lower }}">
+                                                        <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" 
+                                                                type="button" 
+                                                                data-bs-toggle="collapse" 
+                                                                data-bs-target="#collapse-{{ category|lower }}-{{ mood|lower }}" 
+                                                                aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" 
+                                                                aria-controls="collapse-{{ category|lower }}-{{ mood|lower }}">
+                                                            {{ mood }} <span class="badge bg-secondary rounded-pill ms-2">{{ samples|length }}</span>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapse-{{ category|lower }}-{{ mood|lower }}" 
+                                                         class="accordion-collapse collapse {% if loop.first %}show{% endif %}" 
+                                                         aria-labelledby="heading-{{ category|lower }}-{{ mood|lower }}" 
+                                                         data-bs-parent="#accordion-{{ category|lower|replace(' ', '-') }}">
+                                                        <div class="accordion-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Name</th>
+                                                                            <th>Duration</th>
+                                                                            <th>Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for sample in samples %}
+                                                                            <tr data-sample-id="{{ sample.id }}">
+                                                                                <td>{{ sample.name }}</td>
+                                                                                <td>Unknown</td>
+                                                                                <td>
+                                                                                    <button class="btn btn-sm btn-outline-primary play-btn" data-path="{{ sample.path }}">
+                                                                                        <i class="fas fa-play"></i>
+                                                                                    </button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        {% endfor %}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> No processed samples found. Please upload and process audio files first.
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-upload"></i> Upload Audio Files
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sample Details Modal -->
+<div class="modal fade" id="sampleDetailsModal" tabindex="-1" aria-labelledby="sampleDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sampleDetailsModalLabel">Sample Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Basic Information</h5>
+                        <table class="table">
+                            <tr>
+                                <th>Name</th>
+                                <td id="sample-name"></td>
+                            </tr>
+                            <tr>
+                                <th>Category</th>
+                                <td id="sample-category"></td>
+                            </tr>
+                            <tr>
+                                <th>Mood</th>
+                                <td id="sample-mood"></td>
+                            </tr>
+                            <tr>
+                                <th>Duration</th>
+                                <td id="sample-duration"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Audio Features</h5>
+                        <table class="table">
+                            <tr>
+                                <th>Spectral Centroid</th>
+                                <td id="feature-spectral-centroid"></td>
+                            </tr>
+                            <tr>
+                                <th>Zero Crossing Rate</th>
+                                <td id="feature-zcr"></td>
+                            </tr>
+                            <tr>
+                                <th>Energy</th>
+                                <td id="feature-energy"></td>
+                            </tr>
+                            <tr>
+                                <th>Tempo</th>
+                                <td id="feature-tempo"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h5>Waveform</h5>
+                        <div id="waveform-container" class="p-3 border rounded">
+                            <svg id="waveform-svg" width="100%" height="150"></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="play-in-modal">
+                    <i class="fas fa-play"></i> Play
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/audio_player.js') }}"></script>
+<script>
+    // Use window.sampleList to avoid conflicts with global variables
+    window.sampleList = [];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle play button clicks
+        const playButtons = document.querySelectorAll('.play-btn');
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const path = this.getAttribute('data-path');
+                playAudio(path, this);
+                
+                // Toggle icons for all buttons
+                playButtons.forEach(btn => {
+                    if (btn !== this) {
+                        btn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

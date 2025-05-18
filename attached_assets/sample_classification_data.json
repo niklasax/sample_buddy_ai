@@ -1,0 +1,1545 @@
+{
+  "PM_EN_Strings_One_Shot_Solo_Scary.wav": {
+    "classification": {
+      "type": "pad",
+      "subtype": "strings_pad",
+      "mood_hint": "dark",
+      "duration": "long",
+      "mood_energy": "chill",
+      "mood_energy_value": 1.93,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 2.35,
+      "mood_texture": "smooth",
+      "mood_texture_value": -54.77,
+      "mood_weight": "light",
+      "mood_weight_value": 0.02,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 1.93,
+        "brightness": "dark",
+        "brightness_value": 2.35,
+        "texture": "smooth",
+        "texture_value": -54.77,
+        "weight": "light",
+        "weight_value": 0.02,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 6.530612244897959,
+      "sample_rate": 44100,
+      "energy_mean": 0.009620103053748608,
+      "energy_std": 0.03802067041397095,
+      "energy_max": 0.3231361210346222,
+      "energy_dynamic_range": 33.554793674698885,
+      "avg_centroid": 2351.5061670549308,
+      "avg_bandwidth": 2771.4663507312425,
+      "avg_contrast": 18.062713836350834,
+      "avg_flatness": 0.003980415873229504,
+      "avg_rolloff": 4412.662008769982,
+      "tempo": 123.046875,
+      "onset_rate": 2.603125,
+      "mfcc1": -532.2362060546875,
+      "mfcc2": 43.736663818359375,
+      "mfcc3": -15.32364273071289,
+      "mfcc4": -9.01158618927002,
+      "mfcc5": -2.225782871246338,
+      "attack_time": 0.03,
+      "has_transient": true,
+      "is_sustained": false,
+      "avg_zcr": 0.06672714531527531,
+      "harmonic_percussive_ratio": 3.0214383602142334,
+      "roughness": -17.062713836350834
+    }
+  },
+  "RKU_BME_Drum_Loop_StraightGangster_75.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "duration": "very_long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 2.77,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 3.66,
+      "mood_texture": "smooth",
+      "mood_texture_value": -47.6,
+      "mood_weight": "light",
+      "mood_weight_value": 1.4,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_overall_mood": [
+        "chill",
+        "dark"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "other_percussion"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 2.77,
+        "brightness": "warm",
+        "brightness_value": 3.66,
+        "texture": "smooth",
+        "texture_value": -47.6,
+        "weight": "light",
+        "weight_value": 1.4,
+        "overall_mood": [
+          "chill",
+          "dark"
+        ]
+      }
+    },
+    "features": {
+      "duration": 12.8,
+      "sample_rate": 44100,
+      "energy_mean": 0.18403853476047516,
+      "energy_std": 0.2545110583305359,
+      "energy_max": 0.7607777714729309,
+      "energy_dynamic_range": 4.133571465065038,
+      "avg_centroid": 3670.400794462793,
+      "avg_bandwidth": 2624.7507190329875,
+      "avg_contrast": 15.913316942104096,
+      "avg_flatness": 0.09411855041980743,
+      "avg_rolloff": 5925.222980295218,
+      "tempo": 99.38401442307692,
+      "onset_rate": 5.15625,
+      "mfcc1": -364.31005859375,
+      "mfcc2": 15.732922554016113,
+      "mfcc3": -3.7327194213867188,
+      "mfcc4": 39.550601959228516,
+      "mfcc5": 0.34644579887390137,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 0.006706459913402796,
+      "bass_ratio": 0.014805779792368412,
+      "low_mid_ratio": 0.00575897516682744,
+      "mid_ratio": 0.07389761507511139,
+      "upper_mid_ratio": 0.06258291006088257,
+      "high_ratio": 0.6797692775726318,
+      "avg_zcr": 0.0906463374036718,
+      "harmonic_percussive_ratio": 0.7938562035560608,
+      "roughness": -14.913316942104096
+    }
+  },
+  "STCR2_DLZ_145_Hat_Loop_Tall.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "hi_hat_cymbal",
+      "duration": "long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 4.08,
+      "mood_brightness": "bright",
+      "mood_brightness_value": 8.7,
+      "mood_texture": "smooth",
+      "mood_texture_value": -52.82,
+      "mood_weight": "light",
+      "mood_weight_value": 1.58,
+      "mood_1": "chill",
+      "mood_2": "bright",
+      "mood_overall_mood": [
+        "chill",
+        "bright"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 4.08,
+        "brightness": "bright",
+        "brightness_value": 8.7,
+        "texture": "smooth",
+        "texture_value": -52.82,
+        "weight": "light",
+        "weight_value": 1.58,
+        "overall_mood": [
+          "chill",
+          "bright"
+        ]
+      }
+    },
+    "features": {
+      "duration": 6.620666666666667,
+      "sample_rate": 48000,
+      "energy_mean": 0.030789775773882866,
+      "energy_std": 0.05381530523300171,
+      "energy_max": 0.200779989361763,
+      "energy_dynamic_range": 6.518878281315847,
+      "avg_centroid": 8695.411882493316,
+      "avg_bandwidth": 4916.035877753283,
+      "avg_contrast": 17.883289093781595,
+      "avg_flatness": 0.1463363766670227,
+      "avg_rolloff": 14211.881038647343,
+      "tempo": 72.11538461538461,
+      "onset_rate": 5.135434498036451,
+      "mfcc1": -496.43426513671875,
+      "mfcc2": -15.462699890136719,
+      "mfcc3": -34.632408142089844,
+      "mfcc4": 18.574146270751953,
+      "mfcc5": -19.675392150878906,
+      "attack_time": 0.01,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.3048266719504831,
+      "harmonic_percussive_ratio": 0.0037129379343241453,
+      "roughness": -16.883289093781595
+    }
+  },
+  "TSP_ST_132_perc_cherry.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "duration": "very_long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 3.5,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 4.59,
+      "mood_texture": "smooth",
+      "mood_texture_value": -44.46,
+      "mood_weight": "light",
+      "mood_weight_value": 1.1,
+      "mood_1": "chill",
+      "mood_2": "tense",
+      "mood_overall_mood": [
+        "chill",
+        "tense"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "hi_hat_cymbal"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 3.5,
+        "brightness": "warm",
+        "brightness_value": 4.59,
+        "texture": "smooth",
+        "texture_value": -44.46,
+        "weight": "light",
+        "weight_value": 1.1,
+        "overall_mood": [
+          "chill",
+          "tense"
+        ]
+      }
+    },
+    "features": {
+      "duration": 14.54546485260771,
+      "sample_rate": 44100,
+      "energy_mean": 0.05754869431257248,
+      "energy_std": 0.0662926435470581,
+      "energy_max": 0.2160024493932724,
+      "energy_dynamic_range": 3.7527336568871963,
+      "avg_centroid": 6952.239077303894,
+      "avg_bandwidth": 4526.445361882888,
+      "avg_contrast": 15.291288402645748,
+      "avg_flatness": 0.10655993223190308,
+      "avg_rolloff": 11776.513944657821,
+      "tempo": 132.51201923076923,
+      "onset_rate": 4.60624673593627,
+      "mfcc1": -296.6195373535156,
+      "mfcc2": 13.501694679260254,
+      "mfcc3": -50.878074645996094,
+      "mfcc4": 8.427891731262207,
+      "mfcc5": -24.418394088745117,
+      "attack_time": 0.01,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 0.0005672193947248161,
+      "bass_ratio": 0.0001015648158499971,
+      "low_mid_ratio": 0.015412451699376106,
+      "mid_ratio": 0.04884754866361618,
+      "upper_mid_ratio": 0.08148452639579773,
+      "high_ratio": 0.600665271282196,
+      "avg_zcr": 0.25363034966081405,
+      "harmonic_percussive_ratio": 0.006502870004624128,
+      "roughness": -14.291288402645748
+    }
+  },
+  "PM_EN_Instrument_Synth_One_Shot_Freaky_F#m.wav": {
+    "classification": {
+      "type": "lead",
+      "subtype": "synth_lead",
+      "duration": "long",
+      "mood_energy": "chill",
+      "mood_energy_value": 1.73,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 1.09,
+      "mood_texture": "smooth",
+      "mood_texture_value": -71.21,
+      "mood_weight": "light",
+      "mood_weight_value": 0.12,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 1.73,
+        "brightness": "dark",
+        "brightness_value": 1.09,
+        "texture": "smooth",
+        "texture_value": -71.21,
+        "weight": "light",
+        "weight_value": 0.12,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 6.530612244897959,
+      "sample_rate": 44100,
+      "energy_mean": 0.04666157439351082,
+      "energy_std": 0.08037568628787994,
+      "energy_max": 0.3496589660644531,
+      "energy_dynamic_range": 7.491904239533635,
+      "avg_centroid": 1090.3759107255496,
+      "avg_bandwidth": 926.9109338499006,
+      "avg_contrast": 22.92882252808512,
+      "avg_flatness": 4.9518012019689195e-06,
+      "avg_rolloff": 1827.3007326820605,
+      "tempo": 120.18531976744185,
+      "onset_rate": 1.8375,
+      "mfcc1": -439.6481628417969,
+      "mfcc2": 63.21531677246094,
+      "mfcc3": -6.962055206298828,
+      "mfcc4": -0.4506620764732361,
+      "mfcc5": -2.70770263671875,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": false,
+      "avg_zcr": 0.032362726187833035,
+      "harmonic_percussive_ratio": 169.98939514160156,
+      "roughness": -21.92882252808512
+    }
+  },
+  "OLIVER_110_drum_loop_cinematic_alec_maire_ready_to_rock_hits.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "mood_hint": "dark",
+      "genre_hint": "pop",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 1.57,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 1.83,
+      "mood_texture": "smooth",
+      "mood_texture_value": -46.59,
+      "mood_weight": "light",
+      "mood_weight_value": 2.0,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 1.57,
+        "brightness": "dark",
+        "brightness_value": 1.83,
+        "texture": "smooth",
+        "texture_value": -46.59,
+        "weight": "light",
+        "weight_value": 2.0,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 8.727278911564627,
+      "sample_rate": 44100,
+      "energy_mean": 0.19805413484573364,
+      "energy_std": 0.09117402136325836,
+      "energy_max": 0.39986687898635864,
+      "energy_dynamic_range": 2.018875751017736,
+      "avg_centroid": 1828.587022098471,
+      "avg_bandwidth": 2744.8833118489483,
+      "avg_contrast": 15.532426410451732,
+      "avg_flatness": 0.003256157273426652,
+      "avg_rolloff": 3736.4688954454787,
+      "tempo": 147.65625,
+      "onset_rate": 2.177081790616645,
+      "mfcc1": -211.662109375,
+      "mfcc2": 133.8957061767578,
+      "mfcc3": -15.775784492492676,
+      "mfcc4": 51.63234329223633,
+      "mfcc5": 12.635825157165527,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.028885212350398936,
+      "harmonic_percussive_ratio": 5.8568525314331055,
+      "roughness": -14.532426410451732
+    }
+  },
+  "DEMO 2.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.21,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 1.51,
+      "mood_texture": "smooth",
+      "mood_texture_value": -50.83,
+      "mood_weight": "light",
+      "mood_weight_value": 1.67,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "other_percussion"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.21,
+        "brightness": "dark",
+        "brightness_value": 1.51,
+        "texture": "smooth",
+        "texture_value": -50.83,
+        "weight": "light",
+        "weight_value": 1.67,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 92.68965986394558,
+      "sample_rate": 44100,
+      "energy_mean": 0.3983846604824066,
+      "energy_std": 0.16812507808208466,
+      "energy_max": 0.9002097845077515,
+      "energy_dynamic_range": 2.2595929960951504,
+      "avg_centroid": 4291.683552799569,
+      "avg_bandwidth": 4209.793012872611,
+      "avg_contrast": 16.884955098349558,
+      "avg_flatness": 0.02963346615433693,
+      "avg_rolloff": 8904.286955258172,
+      "tempo": 143.5546875,
+      "onset_rate": 1.7046130089582823,
+      "mfcc1": -22.306203842163086,
+      "mfcc2": 96.75411224365234,
+      "mfcc3": -26.072492599487305,
+      "mfcc4": 18.550424575805664,
+      "mfcc5": -8.907628059387207,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 8.85759582160972e-05,
+      "bass_ratio": 0.0004814467392861843,
+      "low_mid_ratio": 0.0005857128417119384,
+      "mid_ratio": 0.0031266100704669952,
+      "upper_mid_ratio": 0.003546761581674218,
+      "high_ratio": 0.020843368023633957,
+      "avg_zcr": 0.07473180002583292,
+      "harmonic_percussive_ratio": 2.8641722202301025,
+      "roughness": -15.884955098349558
+    }
+  },
+  "BB2_lofi_keys_chord_start_here_maj7_C.wav": {
+    "classification": {
+      "type": "pad",
+      "subtype": "strings_pad",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 1.82,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 3.08,
+      "mood_texture": "smooth",
+      "mood_texture_value": -58.2,
+      "mood_weight": "light",
+      "mood_weight_value": 0.13,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 1.82,
+        "brightness": "warm",
+        "brightness_value": 3.08,
+        "texture": "smooth",
+        "texture_value": -58.2,
+        "weight": "light",
+        "weight_value": 0.13,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 8.659954648526076,
+      "sample_rate": 44100,
+      "energy_mean": 0.053061164915561676,
+      "energy_std": 0.07709769159555435,
+      "energy_max": 0.3255194127559662,
+      "energy_dynamic_range": 6.133639864018067,
+      "avg_centroid": 3079.65075456516,
+      "avg_bandwidth": 4012.414935089897,
+      "avg_contrast": 19.10507825475934,
+      "avg_flatness": 0.084104023873806,
+      "avg_rolloff": 4933.8456795618295,
+      "tempo": 114.84375,
+      "onset_rate": 0.46189618333403165,
+      "mfcc1": -474.7541809082031,
+      "mfcc2": 78.40105438232422,
+      "mfcc3": 62.23307800292969,
+      "mfcc4": 42.02158737182617,
+      "mfcc5": 23.09662437438965,
+      "attack_time": 0.03,
+      "has_transient": true,
+      "is_sustained": false,
+      "avg_zcr": 0.09298419696715818,
+      "harmonic_percussive_ratio": 307.49761962890625,
+      "roughness": -18.10507825475934
+    }
+  },
+  "DEMO 1.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.32,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 1.47,
+      "mood_texture": "smooth",
+      "mood_texture_value": -51.5,
+      "mood_weight": "light",
+      "mood_weight_value": 1.54,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "other_percussion"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.32,
+        "brightness": "dark",
+        "brightness_value": 1.47,
+        "texture": "smooth",
+        "texture_value": -51.5,
+        "weight": "light",
+        "weight_value": 1.54,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 99.31036281179138,
+      "sample_rate": 44100,
+      "energy_mean": 0.3242783546447754,
+      "energy_std": 0.16895319521427155,
+      "energy_max": 0.8351626396179199,
+      "energy_dynamic_range": 2.5753704308400307,
+      "avg_centroid": 3896.0250471811514,
+      "avg_bandwidth": 3869.5676460740524,
+      "avg_contrast": 17.096097214988742,
+      "avg_flatness": 0.0167890265583992,
+      "avg_rolloff": 7582.980161876023,
+      "tempo": 143.5546875,
+      "onset_rate": 2.809374491247691,
+      "mfcc1": -64.75422668457031,
+      "mfcc2": 79.32588958740234,
+      "mfcc3": -51.33906173706055,
+      "mfcc4": 14.32437801361084,
+      "mfcc5": -17.864171981811523,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 0.00011197465937584639,
+      "bass_ratio": 0.0005558364209719002,
+      "low_mid_ratio": 0.0008004620322026312,
+      "mid_ratio": 0.004327724222093821,
+      "upper_mid_ratio": 0.005726357456296682,
+      "high_ratio": 0.04620795324444771,
+      "avg_zcr": 0.07743287816737783,
+      "harmonic_percussive_ratio": 2.664177417755127,
+      "roughness": -16.096097214988742
+    }
+  },
+  "RKU_VPE_130_vocal_chop_loop_sugar.wav": {
+    "classification": {
+      "type": "vocal",
+      "subtype": "vocal",
+      "genre_hint": "hiphop",
+      "duration": "very_long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 2.79,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 3.05,
+      "mood_texture": "smooth",
+      "mood_texture_value": -60.18,
+      "mood_weight": "light",
+      "mood_weight_value": 1.17,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_overall_mood": [
+        "chill",
+        "dark"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "other_percussion"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 2.79,
+        "brightness": "warm",
+        "brightness_value": 3.05,
+        "texture": "smooth",
+        "texture_value": -60.18,
+        "weight": "light",
+        "weight_value": 1.17,
+        "overall_mood": [
+          "chill",
+          "dark"
+        ]
+      }
+    },
+    "features": {
+      "duration": 14.768979591836734,
+      "sample_rate": 44100,
+      "energy_mean": 0.053709715604782104,
+      "energy_std": 0.06427370011806488,
+      "energy_max": 0.24208582937717438,
+      "energy_dynamic_range": 4.506461485354997,
+      "avg_centroid": 2668.5528767270857,
+      "avg_bandwidth": 2059.938221575744,
+      "avg_contrast": 19.786526572436895,
+      "avg_flatness": 0.00087738101137802,
+      "avg_rolloff": 4252.44393779458,
+      "tempo": 129.19921875,
+      "onset_rate": 6.770948485518462,
+      "mfcc1": -391.5882873535156,
+      "mfcc2": 101.5342788696289,
+      "mfcc3": -64.9670181274414,
+      "mfcc4": -24.7623348236084,
+      "mfcc5": -10.777288436889648,
+      "attack_time": 0.01,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 0.0014408592833206058,
+      "bass_ratio": 0.020296858623623848,
+      "low_mid_ratio": 0.006605507805943489,
+      "mid_ratio": 0.04538298770785332,
+      "upper_mid_ratio": 0.08151502162218094,
+      "high_ratio": 0.5783106088638306,
+      "avg_zcr": 0.11602951013845247,
+      "harmonic_percussive_ratio": 0.06091734394431114,
+      "roughness": -18.786526572436895
+    }
+  },
+  "ZEN_TRT_150_lead_synth_loop_rampage_D#m.wav": {
+    "classification": {
+      "type": "lead",
+      "subtype": "synth_lead",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.27,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 2.94,
+      "mood_texture": "smooth",
+      "mood_texture_value": -47.41,
+      "mood_weight": "light",
+      "mood_weight_value": 1.22,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "other_percussion"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.27,
+        "brightness": "warm",
+        "brightness_value": 2.94,
+        "texture": "smooth",
+        "texture_value": -47.41,
+        "weight": "light",
+        "weight_value": 1.22,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 25.6,
+      "sample_rate": 44100,
+      "energy_mean": 0.11823735386133194,
+      "energy_std": 0.018227385357022285,
+      "energy_max": 0.16644275188446045,
+      "energy_dynamic_range": 1.4075811969513248,
+      "avg_centroid": 4969.866655632064,
+      "avg_bandwidth": 4633.006057585858,
+      "avg_contrast": 15.927002896351018,
+      "avg_flatness": 0.04129880294203758,
+      "avg_rolloff": 9684.270150123244,
+      "tempo": 147.65625,
+      "onset_rate": 5.4296875,
+      "mfcc1": -96.38308715820312,
+      "mfcc2": 61.037654876708984,
+      "mfcc3": -43.4772834777832,
+      "mfcc4": 22.710613250732422,
+      "mfcc5": -5.290794372558594,
+      "attack_time": 0.03,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 0.000820632092654705,
+      "bass_ratio": 0.006102703977376223,
+      "low_mid_ratio": 0.005638767033815384,
+      "mid_ratio": 0.02734476327896118,
+      "upper_mid_ratio": 0.04519892856478691,
+      "high_ratio": 0.3418055772781372,
+      "avg_zcr": 0.1117081698351088,
+      "harmonic_percussive_ratio": 1.1171281337738037,
+      "roughness": -14.927002896351018
+    }
+  },
+  "FSS_OPHE_126_drum_top_loop_inspire.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "duration": "long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 4.64,
+      "mood_brightness": "bright",
+      "mood_brightness_value": 10.0,
+      "mood_texture": "smooth",
+      "mood_texture_value": -37.44,
+      "mood_weight": "light",
+      "mood_weight_value": 1.6,
+      "mood_1": "chill",
+      "mood_2": "bright",
+      "mood_overall_mood": [
+        "chill",
+        "bright"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 4.64,
+        "brightness": "bright",
+        "brightness_value": 10.0,
+        "texture": "smooth",
+        "texture_value": -37.44,
+        "weight": "light",
+        "weight_value": 1.6,
+        "overall_mood": [
+          "chill",
+          "bright"
+        ]
+      }
+    },
+    "features": {
+      "duration": 3.8095416666666666,
+      "sample_rate": 48000,
+      "energy_mean": 0.03960112854838371,
+      "energy_std": 0.06296996027231216,
+      "energy_max": 0.23440060019493103,
+      "energy_dynamic_range": 5.917544104016583,
+      "avg_centroid": 10655.687823851638,
+      "avg_bandwidth": 5014.83988004547,
+      "avg_contrast": 13.429471143192133,
+      "avg_flatness": 0.20874901115894318,
+      "avg_rolloff": 16051.675977653631,
+      "tempo": 125.0,
+      "onset_rate": 8.137461855647551,
+      "mfcc1": -427.05035400390625,
+      "mfcc2": -84.16372680664062,
+      "mfcc3": -53.68611526489258,
+      "mfcc4": 0.4262695014476776,
+      "mfcc5": -22.7956600189209,
+      "attack_time": 0.01,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.40132354224860334,
+      "harmonic_percussive_ratio": 0.0014861647505313158,
+      "roughness": -12.429471143192133
+    }
+  },
+  "RKU_MT_140_vocal_chop_loop_pressure.wav": {
+    "classification": {
+      "type": "vocal",
+      "subtype": "vocal",
+      "genre_hint": "hiphop",
+      "duration": "long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.27,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 2.38,
+      "mood_texture": "smooth",
+      "mood_texture_value": -65.11,
+      "mood_weight": "light",
+      "mood_weight_value": 1.74,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.27,
+        "brightness": "dark",
+        "brightness_value": 2.38,
+        "texture": "smooth",
+        "texture_value": -65.11,
+        "weight": "light",
+        "weight_value": 1.74,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 6.856984126984127,
+      "sample_rate": 44100,
+      "energy_mean": 0.0961609035730362,
+      "energy_std": 0.08178495615720749,
+      "energy_max": 0.32713574171066284,
+      "energy_dynamic_range": 3.401608278144359,
+      "avg_centroid": 2376.7505255652386,
+      "avg_bandwidth": 1863.2896043257551,
+      "avg_contrast": 21.188526429293724,
+      "avg_flatness": 0.00034786167088896036,
+      "avg_rolloff": 3929.317695114213,
+      "tempo": 139.6748310810811,
+      "onset_rate": 6.125141785689483,
+      "mfcc1": -283.03009033203125,
+      "mfcc2": 139.9952392578125,
+      "mfcc3": -104.91444396972656,
+      "mfcc4": -0.8277184963226318,
+      "mfcc5": -2.4521260261535645,
+      "attack_time": 0.03,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.07731037172165821,
+      "harmonic_percussive_ratio": 0.13167746365070343,
+      "roughness": -20.188526429293724
+    }
+  },
+  "SO_NP_pluck_chord_fulcrum_maj7_Ebmaj.wav": {
+    "classification": {
+      "type": "pad",
+      "subtype": "strings_pad",
+      "duration": "long",
+      "mood_energy": "chill",
+      "mood_energy_value": 1.36,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 0.59,
+      "mood_texture": "smooth",
+      "mood_texture_value": -70.33,
+      "mood_weight": "light",
+      "mood_weight_value": 0.16,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 1.36,
+        "brightness": "dark",
+        "brightness_value": 0.59,
+        "texture": "smooth",
+        "texture_value": -70.33,
+        "weight": "light",
+        "weight_value": 0.16,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 3.6761224489795916,
+      "sample_rate": 44100,
+      "energy_mean": 0.06382690370082855,
+      "energy_std": 0.06133651360869408,
+      "energy_max": 0.25348731875419617,
+      "energy_dynamic_range": 3.970858610908883,
+      "avg_centroid": 587.5524493788209,
+      "avg_bandwidth": 497.5097546159545,
+      "avg_contrast": 22.64884298690602,
+      "avg_flatness": 3.30809569959456e-07,
+      "avg_rolloff": 748.4995748718454,
+      "tempo": 114.84375,
+      "onset_rate": 0.8160772775217898,
+      "mfcc1": -489.244873046875,
+      "mfcc2": 104.61903381347656,
+      "mfcc3": 50.79935836791992,
+      "mfcc4": 1.8855334520339966,
+      "mfcc5": -26.83626937866211,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": false,
+      "avg_zcr": 0.024962416206624604,
+      "harmonic_percussive_ratio": 19.3542537689209,
+      "roughness": -21.64884298690602
+    }
+  },
+  "TSP_HOSP_snare_sweet.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "snare",
+      "duration": "very_short",
+      "mood_energy": "moderate",
+      "mood_energy_value": 3.25,
+      "mood_brightness": "balanced",
+      "mood_brightness_value": 6.2,
+      "mood_texture": "smooth",
+      "mood_texture_value": -39.28,
+      "mood_weight": "light",
+      "mood_weight_value": 0.52,
+      "mood_1": "chill",
+      "mood_overall_mood": [
+        "chill"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 3.25,
+        "brightness": "balanced",
+        "brightness_value": 6.2,
+        "texture": "smooth",
+        "texture_value": -39.28,
+        "weight": "light",
+        "weight_value": 0.52,
+        "overall_mood": [
+          "chill"
+        ]
+      }
+    },
+    "features": {
+      "duration": 0.08521541950113379,
+      "sample_rate": 44100,
+      "energy_mean": 0.20710840821266174,
+      "energy_std": 0.14951801300048828,
+      "energy_max": 0.393241822719574,
+      "energy_dynamic_range": 1.8986328936817987,
+      "avg_centroid": 6201.061888615009,
+      "avg_bandwidth": 4815.685134187695,
+      "avg_contrast": 13.592958794239253,
+      "avg_flatness": 0.1365933120250702,
+      "avg_rolloff": 11657.537841796875,
+      "tempo": 120.18531976744185,
+      "onset_rate": 11.734965407131453,
+      "mfcc1": -65.78398895263672,
+      "mfcc2": 34.72289276123047,
+      "mfcc3": -52.11717987060547,
+      "mfcc4": 3.0213043689727783,
+      "mfcc5": -25.826770782470703,
+      "attack_time": 0.0,
+      "has_transient": true,
+      "is_sustained": false,
+      "avg_zcr": 0.189208984375,
+      "harmonic_percussive_ratio": 0.0339970737695694,
+      "roughness": -12.592958794239253
+    }
+  },
+  "KMRBI_RHS5_snare_one_shot_best.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "snare",
+      "duration": "very_short",
+      "mood_energy": "moderate",
+      "mood_energy_value": 2.57,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 3.29,
+      "mood_texture": "smooth",
+      "mood_texture_value": -52.71,
+      "mood_weight": "light",
+      "mood_weight_value": 0.2,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_overall_mood": [
+        "chill",
+        "dark"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 2.57,
+        "brightness": "warm",
+        "brightness_value": 3.29,
+        "texture": "smooth",
+        "texture_value": -52.71,
+        "weight": "light",
+        "weight_value": 0.2,
+        "overall_mood": [
+          "chill",
+          "dark"
+        ]
+      }
+    },
+    "features": {
+      "duration": 0.1416326530612245,
+      "sample_rate": 44100,
+      "energy_mean": 0.08147477358579636,
+      "energy_std": 0.10618694871664047,
+      "energy_max": 0.264946848154068,
+      "energy_dynamic_range": 3.2514890389319433,
+      "avg_centroid": 3288.383957191225,
+      "avg_bandwidth": 3272.311853484451,
+      "avg_contrast": 17.466079519283777,
+      "avg_flatness": 0.008678043261170387,
+      "avg_rolloff": 5775.867638221154,
+      "tempo": 135.99917763157896,
+      "onset_rate": 7.060518731988473,
+      "mfcc1": -296.29962158203125,
+      "mfcc2": 98.52957153320312,
+      "mfcc3": -61.80133819580078,
+      "mfcc4": -11.074922561645508,
+      "mfcc5": -24.548900604248047,
+      "attack_time": 0.0,
+      "has_transient": true,
+      "is_sustained": false,
+      "avg_zcr": 0.07906400240384616,
+      "harmonic_percussive_ratio": 0.0007109191501513124,
+      "roughness": -16.466079519283777
+    }
+  },
+  "GIO_MEET_90_vocals_hook_wadi_call_A.wav": {
+    "classification": {
+      "type": "vocal",
+      "subtype": "vocal",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 1.8,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 2.04,
+      "mood_texture": "smooth",
+      "mood_texture_value": -81.04,
+      "mood_weight": "light",
+      "mood_weight_value": 0.36,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 1.8,
+        "brightness": "dark",
+        "brightness_value": 2.04,
+        "texture": "smooth",
+        "texture_value": -81.04,
+        "weight": "light",
+        "weight_value": 0.36,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 10.666666666666666,
+      "sample_rate": 44100,
+      "energy_mean": 0.1437145173549652,
+      "energy_std": 0.078281469643116,
+      "energy_max": 0.31858664751052856,
+      "energy_dynamic_range": 2.216647885647065,
+      "avg_centroid": 2039.8248943733045,
+      "avg_bandwidth": 2660.9104688413677,
+      "avg_contrast": 25.91467751429302,
+      "avg_flatness": 0.00028659391682595015,
+      "avg_rolloff": 3564.4597664751086,
+      "tempo": 120.18531976744185,
+      "onset_rate": 9.1875,
+      "mfcc1": -303.8760681152344,
+      "mfcc2": 110.08018493652344,
+      "mfcc3": -50.35802459716797,
+      "mfcc4": -15.079261779785156,
+      "mfcc5": -17.44548225402832,
+      "attack_time": 0.15,
+      "has_transient": false,
+      "is_sustained": false,
+      "avg_zcr": 0.051110135847388466,
+      "harmonic_percussive_ratio": 655.3218994140625,
+      "roughness": -24.91467751429302
+    }
+  },
+  "ph_125_percussion_loop_breakbeat.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "other_percussion",
+      "duration": "long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 3.66,
+      "mood_brightness": "balanced",
+      "mood_brightness_value": 5.98,
+      "mood_texture": "smooth",
+      "mood_texture_value": -53.54,
+      "mood_weight": "light",
+      "mood_weight_value": 1.62,
+      "mood_1": "chill",
+      "mood_overall_mood": [
+        "chill"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 3.66,
+        "brightness": "balanced",
+        "brightness_value": 5.98,
+        "texture": "smooth",
+        "texture_value": -53.54,
+        "weight": "light",
+        "weight_value": 1.62,
+        "overall_mood": [
+          "chill"
+        ]
+      }
+    },
+    "features": {
+      "duration": 3.84,
+      "sample_rate": 44100,
+      "energy_mean": 0.04754311591386795,
+      "energy_std": 0.036363426595926285,
+      "energy_max": 0.19389162957668304,
+      "energy_dynamic_range": 4.077369607658839,
+      "avg_centroid": 5976.300119909715,
+      "avg_bandwidth": 3071.387552218391,
+      "avg_contrast": 18.101507605784896,
+      "avg_flatness": 0.012846593745052814,
+      "avg_rolloff": 9079.33522941843,
+      "tempo": 126.04801829268293,
+      "onset_rate": 5.989583333333334,
+      "mfcc1": -236.6711883544922,
+      "mfcc2": 36.95952224731445,
+      "mfcc3": -90.75791931152344,
+      "mfcc4": 53.981807708740234,
+      "mfcc5": -62.06831741333008,
+      "attack_time": 0.01,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.2731660687311178,
+      "harmonic_percussive_ratio": 0.0733012855052948,
+      "roughness": -17.101507605784896
+    }
+  },
+  "SAMPLIFIRE_150_drum_loop_build_trap_snare.wav": {
+    "classification": {
+      "type": "percussion",
+      "subtype": "snare",
+      "genre_hint": "hiphop",
+      "duration": "long",
+      "mood_energy": "moderate",
+      "mood_energy_value": 2.79,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 4.79,
+      "mood_texture": "smooth",
+      "mood_texture_value": -45.73,
+      "mood_weight": "light",
+      "mood_weight_value": 1.95,
+      "mood_1": "chill",
+      "mood_overall_mood": [
+        "chill"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "moderate",
+        "energy_value": 2.79,
+        "brightness": "warm",
+        "brightness_value": 4.79,
+        "texture": "smooth",
+        "texture_value": -45.73,
+        "weight": "light",
+        "weight_value": 1.95,
+        "overall_mood": [
+          "chill"
+        ]
+      }
+    },
+    "features": {
+      "duration": 4.833333333333333,
+      "sample_rate": 44100,
+      "energy_mean": 0.1783515363931656,
+      "energy_std": 0.1333206593990326,
+      "energy_max": 0.477790892124176,
+      "energy_dynamic_range": 2.678777620927041,
+      "avg_centroid": 4788.162478171961,
+      "avg_bandwidth": 3731.559827057508,
+      "avg_contrast": 15.424037184377047,
+      "avg_flatness": 0.04458494484424591,
+      "avg_rolloff": 8473.754355890287,
+      "tempo": 120.18531976744185,
+      "onset_rate": 9.724137931034484,
+      "mfcc1": -153.6149444580078,
+      "mfcc2": 69.32669830322266,
+      "mfcc3": -66.01248931884766,
+      "mfcc4": 18.023418426513672,
+      "mfcc5": 14.586380004882812,
+      "attack_time": 0.01,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.11408217176258993,
+      "harmonic_percussive_ratio": 0.026484983041882515,
+      "roughness": -14.424037184377047
+    }
+  },
+  "DS_HED_145_synth_lead_enough_main_D.wav": {
+    "classification": {
+      "type": "lead",
+      "subtype": "synth_lead",
+      "duration": "very_long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.05,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 3.71,
+      "mood_texture": "smooth",
+      "mood_texture_value": -53.17,
+      "mood_weight": "light",
+      "mood_weight_value": 1.33,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_overall_mood": [
+        "chill",
+        "dark"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "percussion",
+        "subtype": "other_percussion"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.05,
+        "brightness": "warm",
+        "brightness_value": 3.71,
+        "texture": "smooth",
+        "texture_value": -53.17,
+        "weight": "light",
+        "weight_value": 1.33,
+        "overall_mood": [
+          "chill",
+          "dark"
+        ]
+      }
+    },
+    "features": {
+      "duration": 13.241383219954649,
+      "sample_rate": 44100,
+      "energy_mean": 0.19659796357154846,
+      "energy_std": 0.14581739902496338,
+      "energy_max": 0.4121653139591217,
+      "energy_dynamic_range": 2.0963815832878447,
+      "avg_centroid": 4283.049808145562,
+      "avg_bandwidth": 3492.465250330601,
+      "avg_contrast": 17.66951216675761,
+      "avg_flatness": 0.014676357619464397,
+      "avg_rolloff": 8083.594648677147,
+      "tempo": 143.5546875,
+      "onset_rate": 2.3411451420938616,
+      "mfcc1": -171.11790466308594,
+      "mfcc2": 26.192380905151367,
+      "mfcc3": -64.90174102783203,
+      "mfcc4": 10.235057830810547,
+      "mfcc5": -27.63401985168457,
+      "attack_time": 0.03,
+      "has_transient": true,
+      "is_sustained": true,
+      "sub_bass_ratio": 1.6705317307241785e-07,
+      "bass_ratio": 6.543019708260545e-07,
+      "low_mid_ratio": 8.724521194380941e-07,
+      "mid_ratio": 0.06944140046834946,
+      "upper_mid_ratio": 0.09368599206209183,
+      "high_ratio": 0.592178463935852,
+      "avg_zcr": 0.11320464847173532,
+      "harmonic_percussive_ratio": 6.223450183868408,
+      "roughness": -16.66951216675761
+    }
+  },
+  "KUURO_animal_fx_01_bird_chirp (1).wav": {
+    "classification": {
+      "type": "fx",
+      "subtype": "effect",
+      "duration": "long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.29,
+      "mood_brightness": "warm",
+      "mood_brightness_value": 4.35,
+      "mood_texture": "smooth",
+      "mood_texture_value": -44.76,
+      "mood_weight": "light",
+      "mood_weight_value": 0.04,
+      "mood_1": "chill",
+      "mood_overall_mood": [
+        "chill"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.29,
+        "brightness": "warm",
+        "brightness_value": 4.35,
+        "texture": "smooth",
+        "texture_value": -44.76,
+        "weight": "light",
+        "weight_value": 0.04,
+        "overall_mood": [
+          "chill"
+        ]
+      }
+    },
+    "features": {
+      "duration": 6.682448979591837,
+      "sample_rate": 44100,
+      "energy_mean": 0.0170381311327219,
+      "energy_std": 0.03751301020383835,
+      "energy_max": 0.23725439608097076,
+      "energy_dynamic_range": 13.916739273877862,
+      "avg_centroid": 4353.381835148424,
+      "avg_bandwidth": 4482.539733225466,
+      "avg_contrast": 15.062704452459569,
+      "avg_flatness": 0.031548112630844116,
+      "avg_rolloff": 8336.489868164062,
+      "tempo": 147.65625,
+      "onset_rate": 6.4347666748106525,
+      "mfcc1": -560.0909423828125,
+      "mfcc2": 19.82843780517578,
+      "mfcc3": -10.49885368347168,
+      "mfcc4": -29.55728530883789,
+      "mfcc5": -22.759387969970703,
+      "attack_time": 0.06,
+      "has_transient": false,
+      "is_sustained": false,
+      "avg_zcr": 0.07522667778862847,
+      "harmonic_percussive_ratio": 462.3934326171875,
+      "roughness": -14.062704452459569
+    }
+  },
+  "RKU_MT_140_vocal_hook_loop_finger_on_the_trigger.wav": {
+    "classification": {
+      "type": "vocal",
+      "subtype": "vocal",
+      "duration": "long",
+      "mood_energy": "chill",
+      "mood_energy_value": 2.21,
+      "mood_brightness": "dark",
+      "mood_brightness_value": 2.35,
+      "mood_texture": "smooth",
+      "mood_texture_value": -65.16,
+      "mood_weight": "light",
+      "mood_weight_value": 1.72,
+      "mood_1": "chill",
+      "mood_2": "dark",
+      "mood_3": "sad",
+      "mood_overall_mood": [
+        "chill",
+        "dark",
+        "sad"
+      ]
+    },
+    "all_classifications": {
+      "traditional": {
+        "type": "other",
+        "subtype": "other"
+      },
+      "mood": {
+        "energy": "chill",
+        "energy_value": 2.21,
+        "brightness": "dark",
+        "brightness_value": 2.35,
+        "texture": "smooth",
+        "texture_value": -65.16,
+        "weight": "light",
+        "weight_value": 1.72,
+        "overall_mood": [
+          "chill",
+          "dark",
+          "sad"
+        ]
+      }
+    },
+    "features": {
+      "duration": 6.856984126984127,
+      "sample_rate": 44100,
+      "energy_mean": 0.0865539088845253,
+      "energy_std": 0.06126347556710243,
+      "energy_max": 0.2766372859477997,
+      "energy_dynamic_range": 3.195757787657543,
+      "avg_centroid": 2352.125302199543,
+      "avg_bandwidth": 2494.6936162292272,
+      "avg_contrast": 21.16397678611665,
+      "avg_flatness": 0.0010311624500900507,
+      "avg_rolloff": 4448.118506107234,
+      "tempo": 139.6748310810811,
+      "onset_rate": 4.95844811222482,
+      "mfcc1": -290.2134704589844,
+      "mfcc2": 135.29124450683594,
+      "mfcc3": -56.987091064453125,
+      "mfcc4": 19.275903701782227,
+      "mfcc5": -13.455230712890625,
+      "attack_time": 0.02,
+      "has_transient": true,
+      "is_sustained": true,
+      "avg_zcr": 0.05865736701565144,
+      "harmonic_percussive_ratio": 0.8716260194778442,
+      "roughness": -20.16397678611665
+    }
+  }
+}

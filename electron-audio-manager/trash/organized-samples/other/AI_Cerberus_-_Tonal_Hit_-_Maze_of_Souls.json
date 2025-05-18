@@ -1,0 +1,49 @@
+{
+  "file_name": "AI_Cerberus_-_Tonal_Hit_-_Maze_of_Souls.wav",
+  "category": "other",
+  "mood": "dark",
+  "features": {
+    "duration": 29.896770833333335,
+    "sample_rate": 48000,
+    "energy_mean": 0.08243731409311295,
+    "energy_std": 0.06006531044840813,
+    "energy_max": 0.2529211640357971,
+    "energy_dynamic_range": 3.0676701456903412,
+    "avg_centroid": 300.5832242066797,
+    "avg_bandwidth": 379.8900751087187,
+    "avg_contrast": 17.293561927196517,
+    "avg_flatness": 8.581694601161871e-06,
+    "avg_rolloff": 565.7526534070638,
+    "tempo": 122.28260869565217,
+    "onset_rate": 4.54898626872328,
+    "mfcc1": -452.4768981933594,
+    "mfcc2": 167.828857421875,
+    "mfcc3": 83.7768783569336,
+    "mfcc4": 23.216594696044922,
+    "mfcc5": 6.570157051086426,
+    "attack_time": 0.06,
+    "has_transient": false,
+    "is_sustained": false,
+    "avg_zcr": 0.008072231481894399,
+    "harmonic_percussive_ratio": 17.5632266998291,
+    "brightness": 0.012524301008611653,
+    "roughness": -16.293561927196517,
+    "sub_bass_ratio": 4.588680531014688e-05,
+    "bass_ratio": 0.0017800178611651063,
+    "low_mid_ratio": 0.004256849177181721,
+    "mid_ratio": 0.040175583213567734,
+    "upper_mid_ratio": 0.07098107784986496,
+    "high_ratio": 0.4737018942832947
+  },
+  "mood_details": {
+    "energy_value": 2.69,
+    "energy": "moderate",
+    "brightness_value": 0.41,
+    "brightness": "dark",
+    "texture_value": -17.29,
+    "texture": "smooth",
+    "overall_mood": [
+      "dark"
+    ]
+  }
+}

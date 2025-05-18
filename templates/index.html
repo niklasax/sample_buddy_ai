@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>Audio Sample Classification</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Upload your audio samples to classify them by type, subtype, and mood.</p>
+                
+                <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="mb-4">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Select Audio Files</label>
+                        <input type="file" class="form-control" id="file" name="file" multiple accept=".wav,.mp3,.ogg,.flac,.aif,.aiff">
+                        <div class="form-text text-light">Supported formats: WAV, MP3, OGG, FLAC, AIFF</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="custom_output_dir" class="form-label">Custom Session Name (optional)</label>
+                        <input type="text" class="form-control" id="custom_output_dir" name="custom_output_dir" placeholder="e.g., drum_samples_may2025">
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="use_deep" name="use_deep" value="true">
+                        <label class="form-check-label" for="use_deep">Use Deep Audio Analysis</label>
+                        <div class="form-text text-light">
+                            <strong>Quick Analysis:</strong> Classification based on filename patterns. Very fast but less accurate.<br>
+                            <strong>Deep Analysis:</strong> Full audio feature extraction with librosa. Much more accurate but slower.
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="batch_size" class="form-label">Batch Size</label>
+                            <input type="number" class="form-control" id="batch_size" name="batch_size" min="1" max="100" 
+                                   placeholder="Leave empty for defaults">
+                            <div class="form-text text-light">
+                                Number of files processed in each batch (default: 20 for quick, 10 for deep)
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="max_workers" class="form-label">Max Workers</label>
+                            <input type="number" class="form-control" id="max_workers" name="max_workers" min="1" max="8" 
+                                   placeholder="Leave empty for defaults">
+                            <div class="form-text text-light">
+                                Number of parallel processing threads (default: 4 for quick, 2 for deep)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Upload & Classify</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>About Quick Classification</h3>
+            </div>
+            <div class="card-body">
+                <p>The quick classifier uses filename patterns to categorize audio samples:</p>
+                <ul>
+                    <li><strong>Percussion:</strong> kick, snare, hihat, tom, clap, perc, drum</li>
+                    <li><strong>Bass:</strong> bass, sub, 808</li>
+                    <li><strong>Lead:</strong> lead, arp, pluck, synth</li>
+                    <li><strong>Pad:</strong> pad, atmosphere, ambient, strings</li>
+                    <li><strong>Vocal:</strong> vocal, vox, voice, sing</li>
+                    <li><strong>FX:</strong> fx, effect, riser, impact</li>
+                </ul>
+                <p>Mood is also detected from keywords like "dark", "bright", "energetic", "chill", etc.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>About Deep Classification</h3>
+            </div>
+            <div class="card-body">
+                <p>The deep classifier extracts audio features using librosa:</p>
+                <ul>
+                    <li><strong>Spectral Features:</strong> centroid, bandwidth, contrast, rolloff</li>
+                    <li><strong>Energy & Rhythm:</strong> RMS energy, tempo, onset detection</li>
+                    <li><strong>Timbre & Texture:</strong> MFCCs, harmonic-percussive separation</li>
+                    <li><strong>Envelope Analysis:</strong> Attack time, sustain detection</li>
+                    <li><strong>Frequency Bands:</strong> Sub-bass, bass, mids, highs ratios</li>
+                </ul>
+                <p>These features are used to determine instrument type and mood characteristics.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

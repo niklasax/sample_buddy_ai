@@ -1,0 +1,43 @@
+modules = ["python-3.11", "nodejs-20", "python3"]
+
+[nix]
+channel = "stable-24_05"
+packages = ["bash", "cairo", "dbus", "ffmpeg-full", "freetype", "ghostscript", "glib", "glibcLocales", "gobject-introspection", "gtk3", "libuuid", "libxcrypt", "nss", "openssl", "pkg-config", "postgresql", "qhull", "tcl", "tk", "xsimd"]
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+
+[workflows]
+runButton = "Run Desktop App"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "gunicorn --bind 0.0.0.0:5000 --reuse-port --reload main:app"
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Run Desktop App"
+author = 42251446
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd electron-audio-manager && npm install && npm start"
+
+[[ports]]
+localPort = 5000
+externalPort = 80

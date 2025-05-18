@@ -1,0 +1,34 @@
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/cli/base_command.py", line 188, in main
+    status = self.run(options, args)
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/commands/install.py", line 345, in run
+    resolver.resolve(requirement_set)
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/legacy_resolve.py", line 196, in resolve
+    self._resolve_one(requirement_set, req)
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/legacy_resolve.py", line 359, in _resolve_one
+    abstract_dist = self._get_abstract_dist_for(req_to_install)
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/legacy_resolve.py", line 305, in _get_abstract_dist_for
+    abstract_dist = self.preparer.prepare_linked_requirement(
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 214, in prepare_linked_requirement
+    abstract_dist.prepare_distribution_metadata(
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/distributions/source.py", line 30, in prepare_distribution_metadata
+    self.req.load_pyproject_toml()
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/req/req_install.py", line 501, in load_pyproject_toml
+    pyproject_toml_data = load_pyproject_toml(
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_internal/pyproject.py", line 66, in load_pyproject_toml
+    pp_toml = pytoml.load(f)
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_vendor/pytoml/parser.py", line 11, in load
+    return loads(fin.read(), translate=translate, object_pairs_hook=object_pairs_hook, filename=getattr(fin, 'name', repr(fin)))
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_vendor/pytoml/parser.py", line 24, in loads
+    ast = _p_toml(src, object_pairs_hook=object_pairs_hook)
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_vendor/pytoml/parser.py", line 340, in _p_toml
+    s.expect_eof()
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_vendor/pytoml/parser.py", line 125, in expect_eof
+    return self._expect(self.consume_eof())
+  File "/Users/niklasax/Documents/sample_manager_app/electron-audio-manager/venv/lib/python3.8/site-packages/pip/_vendor/pytoml/parser.py", line 165, in _expect
+    raise TomlError('msg', self._pos[0], self._pos[1], self._filename)
+pip._vendor.pytoml.core.TomlError: /private/var/folders/33/ctb97njd4jsbdbld_9cg2f0h0000gr/T/pip-install-6jzb5dd9/msgpack/pyproject.toml(47, 1): msg
+WARNING: You are using pip version 19.2.3, however version 25.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(venv) (base) niklasax@admins-MBP electron-audio-manager % 

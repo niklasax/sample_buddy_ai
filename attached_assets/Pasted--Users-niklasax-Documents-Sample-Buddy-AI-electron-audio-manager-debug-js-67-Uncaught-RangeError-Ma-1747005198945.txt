@@ -1,0 +1,221 @@
+/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67 Uncaught RangeError: Maximum call stack size exceeded
+    at Function.from (<anonymous>)
+    at console.log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67:25)
+    at log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37:3)
+    at Object.info (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51:28)
+    at console.log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67:14)
+    at log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37:3)
+    at Object.info (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51:28)
+    at console.log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67:14)
+    at log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37:3)
+    at Object.info (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51:28)
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37
+info @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:51
+console.log @ /Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:67
+/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:77 Uncaught RangeError: Maximum call stack size exceeded
+    at Function.from (<anonymous>)
+    at console.error (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:77:26)
+    at log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37:3)
+    at Object.error (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:53:29)
+    at console.error (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:77:14)
+    at log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37:3)
+    at Object.error (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:53:29)
+    at console.error (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/debug.js:77:14)
+    at log (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:37:3)
+    at Object.error (/Users/niklasax/Documents/Sample-Buddy-AI/electron-audio-manager/logger.js:53:29)

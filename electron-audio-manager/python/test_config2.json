@@ -1,0 +1,7 @@
+{
+  "files": [
+    "/tmp/test_audio/short_test_tone.wav", 
+    "/tmp/test_audio/synth_lead_arp.wav"
+  ],
+  "outputDir": "/tmp/classified_audio"
+}

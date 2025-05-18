@@ -1,0 +1,505 @@
+import os
+import logging
+import datetime
+import json
+import tempfile
+import shutil
+from pathlib import Path
+
+try:
+    from flask import Flask, render_template, request, jsonify, flash, redirect, url_for, session
+    from werkzeug.utils import secure_filename
+    from werkzeug.middleware.proxy_fix import ProxyFix
+except ImportError:
+    print("Flask or Werkzeug modules not found. Please install them.")
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
+
+# Try importing custom modules
+try:
+    from audio_processor import process_audio_folder, get_sample_details
+    from feature_extractor import extract_audio_features
+    from classifier import classify_audio_samples
+    from llm_interface import search_samples_with_llm
+except ImportError as e:
+    print(f"Warning: Some custom modules could not be imported: {e}")
+    # Define fallback functions if imports fail
+    def search_samples_with_llm(query, samples):
+        return []
+
+# Create the app
+app = Flask(__name__)
+app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+
+# Configure upload settings
+UPLOAD_FOLDER = os.path.join("tmp", "audio_classifier_uploads")
+OUTPUT_FOLDER = os.path.join("tmp", "audio_classifier_output")
+ALLOWED_EXTENSIONS = {'wav', 'mp3', 'ogg', 'flac', 'aif', 'aiff'}
+
+# Create upload and output directories if they don't exist
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024  # 500MB max upload
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/')
+def index():
+    # Get the output directory path from session
+    output_dir = session.get('output_dir')
+    
+    # Check if we have a session directory
+    if not output_dir or not os.path.exists(output_dir):
+        # If no session directory, find the most recent session folder
+        output_dir = find_latest_session_folder(app.config['OUTPUT_FOLDER'])
+        if output_dir:
+            # Update the session with this folder
+            session['output_dir'] = output_dir
+            app.logger.debug(f"Home: Updated session output_dir to latest: {output_dir}")
+    
+    all_samples = []
+    
+    # If we have a valid output directory, find all audio samples
+    if output_dir and os.path.exists(output_dir):
+        # Walk through the output directory to find all the sample files
+        for root, dirs, files in os.walk(output_dir):
+            # Skip the root directory and only look at subdirectories
+            rel_path = os.path.relpath(root, output_dir)
+            if rel_path == '.':
+                continue
+                
+            # Skip the metadata.json file
+            audio_files = [f for f in files if f.lower().endswith(('.wav', '.mp3', '.ogg', '.flac', '.aif', '.aiff'))]
+            
+            # If we're at a mood subdirectory (2 levels deep)
+            parts = rel_path.split(os.path.sep)
+            if len(parts) >= 2:
+                category = parts[0]
+                mood = parts[1]
+                
+                # Add all files in this directory to the mood category
+                for file in audio_files:
+                    file_path = os.path.join(root, file)
+                    sample_info = {
+                        'id': os.path.splitext(file)[0],
+                        'name': file,
+                        'path': '/' + file_path,
+                        'category': category,
+                        'mood': mood
+                    }
+                    all_samples.append(sample_info)
+    
+    return render_template('index.html', samples=all_samples)
+
+@app.route('/samples')
+def samples():
+    # Get the output directory path from session
+    output_dir = session.get('output_dir')
+    
+    # Check if we have a session directory
+    if not output_dir or not os.path.exists(output_dir):
+        # If no session directory, find the most recent session folder
+        output_dir = find_latest_session_folder(app.config['OUTPUT_FOLDER'])
+        if output_dir:
+            # Update the session with this folder
+            session['output_dir'] = output_dir
+            app.logger.debug(f"Updated session output_dir to latest: {output_dir}")
+        else:
+            flash("No processed samples found. Please upload and process audio files first.", "info")
+            return render_template('index.html')
+    
+    # Build category data from directory structure
+    categories = {}
+    samples_info = []
+    
+    # Walk through the output directory to find all the sample files
+    for root, dirs, files in os.walk(output_dir):
+        # Skip the root directory and only look at subdirectories
+        rel_path = os.path.relpath(root, output_dir)
+        if rel_path == '.':
+            continue
+            
+        # Skip the metadata.json file
+        if 'metadata.json' in files:
+            files.remove('metadata.json')
+            
+        # If we're at a mood subdirectory (2 levels deep)
+        parts = rel_path.split(os.path.sep)
+        if len(parts) >= 2:
+            category = parts[0]
+            mood = parts[1]
+            
+            # Create category if it doesn't exist
+            if category not in categories:
+                categories[category] = {}
+                
+            # Create mood if it doesn't exist
+            if mood not in categories[category]:
+                categories[category][mood] = []
+                
+            # Add all files in this directory to the mood category
+            for file in files:
+                file_path = os.path.join(root, file)
+                sample_info = {
+                    'id': os.path.splitext(file)[0],  # Use filename without extension as ID
+                    'name': file,
+                    'path': '/' + file_path,  # Add leading slash for URL
+                }
+                categories[category][mood].append(sample_info)
+    
+    # Create a simple samples table to display the results
+    all_samples = []
+    for category, moods in categories.items():
+        for mood, samples in moods.items():
+            for sample in samples:
+                sample_info = {
+                    'name': sample['name'],
+                    'category': category,
+                    'mood': mood,
+                    'path': sample['path']
+                }
+                all_samples.append(sample_info)
+    
+    return render_template('index.html', samples=all_samples)
+
+def find_latest_session_folder(base_dir):
+    """Find the most recently modified session folder"""
+    session_folders = []
+    
+    # Find all session folders
+    for item in os.listdir(base_dir):
+        item_path = os.path.join(base_dir, item)
+        if os.path.isdir(item_path) and item.startswith('session_'):
+            session_folders.append(item_path)
+    
+    if not session_folders:
+        return None
+    
+    # Sort by modification time (most recent first)
+    sorted_folders = sorted(session_folders, key=lambda x: os.path.getmtime(x), reverse=True)
+    
+    return sorted_folders[0] if sorted_folders else None
+
+@app.route('/visualize')
+def visualize():
+    # Just render a basic empty template to avoid errors
+    return render_template('index.html')
+
+@app.route('/search')
+def search():
+    # Just render a basic empty template to avoid errors
+    return render_template('index.html')
+
+@app.route('/upload', methods=['POST'])
+def upload_file():  # This function name must match the url_for('upload_file') in templates
+    try:
+        # Get output directory from form if provided
+        custom_output_dir = request.form.get('custom_output_dir')
+        
+        # Create upload folder if it doesn't exist
+        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+        
+        # Process uploaded files
+        if 'file' in request.files:
+            logging.debug("File upload request received")
+            files = request.files.getlist('file')
+            valid_files = 0
+            
+            logging.debug(f"Received {len(files)} files")
+            total_files = len(files)
+            processed_count = 0
+
+            # Generate a unique output directory if not provided
+            if custom_output_dir and custom_output_dir.strip():
+                # Create a session folder with the custom name
+                output_dir = os.path.join(app.config['OUTPUT_FOLDER'], f"session_{custom_output_dir}")
+            else:
+                # Generate a unique session ID
+                output_dir = os.path.join(app.config['OUTPUT_FOLDER'], f"session_{str(hash(str(os.urandom(8))))[:8]}")
+                
+            os.makedirs(output_dir, exist_ok=True)
+            session['output_dir'] = output_dir
+            app.logger.debug(f"Set session output_dir to: {output_dir}")
+            
+            logging.debug(f"Created output directory: {output_dir}")
+            
+            # Process files in batches to prevent timeout and memory issues
+            for file in files:
+                if file and file.filename and allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                    
+                    # Skip already processed files (check if file exists in any output category)
+                    already_processed = False
+                    if os.path.exists(output_dir):
+                        for root, dirs, fs in os.walk(output_dir):
+                            if filename in fs:
+                                already_processed = True
+                                logging.debug(f"Skipping already processed file: {filename}")
+                                break
+                    
+                    if not already_processed:
+                        file.save(file_path)
+                        logging.debug(f"Saved file: {file_path}")
+                        
+                        # Determine category from filename
+                        file_lower = filename.lower()
+                        
+                        if "piano" in file_lower or "keys" in file_lower or "keyboard" in file_lower:
+                            category = "synth"
+                        elif "vocal" in file_lower or "vox" in file_lower or "voice" in file_lower or "choir" in file_lower or "sing" in file_lower:
+                            category = "vocal"
+                        elif "bass" in file_lower:
+                            category = "bass"
+                        elif "drum" in file_lower or "kick" in file_lower or "snare" in file_lower or "perc" in file_lower:
+                            category = "percussion"
+                        elif "synth" in file_lower or "lead" in file_lower:
+                            category = "synth"
+                        elif "guitar" in file_lower or "gtr" in file_lower:
+                            category = "guitar"
+                        elif "fx" in file_lower or "effect" in file_lower:
+                            category = "fx"
+                        elif "pad" in file_lower or "ambient" in file_lower or "atmos" in file_lower:
+                            category = "ambient"
+                        else:
+                            category = "other"
+                            
+                        # Determine mood from filename
+                        mood = "neutral"  # Default mood
+                        
+                        # Create directories and save file
+                        category_dir = os.path.join(output_dir, category)
+                        mood_dir = os.path.join(category_dir, mood)
+                        os.makedirs(mood_dir, exist_ok=True)
+                        
+                        # Copy the file
+                        dst_path = os.path.join(mood_dir, filename)
+                        shutil.copy2(file_path, dst_path)
+                        
+                        logging.debug(f"Organized file {filename} in {category}/{mood}")
+                    
+                    # Clean up the upload folder to save space
+                    if os.path.exists(file_path):
+                        os.remove(file_path)
+                        
+                    valid_files += 1
+                
+                processed_count += 1
+                
+                # Update progress every 5% or 10 files
+                if processed_count % max(1, min(total_files // 20, 10)) == 0:
+                    app.logger.debug(f"Progress: {processed_count}/{total_files} files processed")
+            
+            if valid_files == 0:
+                flash('No valid audio files were uploaded. Supported formats: WAV, MP3, OGG, FLAC, AIF, AIFF', 'error')
+                return redirect(url_for('index'))
+        else:
+            flash('No file uploaded', 'error')
+            return redirect(url_for('index'))
+            
+        # Create or update the metadata file
+        metadata_path = os.path.join(output_dir, 'metadata.json')
+        
+        # Load existing metadata if available
+        if os.path.exists(metadata_path):
+            with open(metadata_path, 'r') as f:
+                try:
+                    metadata = json.load(f)
+                    # Update file count
+                    current_count = metadata.get('session_info', {}).get('file_count', 0)
+                    metadata['session_info']['file_count'] = current_count + valid_files
+                except json.JSONDecodeError:
+                    # Create new metadata if file is corrupted
+                    metadata = {
+                        "session_info": {
+                            "timestamp": str(datetime.datetime.now()),
+                            "file_count": valid_files
+                        }
+                    }
+        else:
+            # Create new metadata file
+            metadata = {
+                "session_info": {
+                    "timestamp": str(datetime.datetime.now()),
+                    "file_count": valid_files
+                }
+            }
+        
+        # Save metadata
+        with open(metadata_path, 'w') as f:
+            json.dump(metadata, f, indent=2)
+            
+        flash(f'Audio samples processed and classified successfully! Total files: {valid_files}', 'success')
+        return redirect(url_for('index'))
+    
+    except Exception as e:
+        logging.exception(f"Error processing audio: {str(e)}")
+        flash(f'Error processing audio: {str(e)}', 'error')
+        return redirect(url_for('index'))
+
+@app.route('/api/sample/<sample_id>')
+def get_sample(sample_id):
+    # Get the output directory path from session
+    output_dir = session.get('output_dir')
+    
+    # Check if we have a session directory
+    if not output_dir or not os.path.exists(output_dir):
+        # If no session directory, find the most recent session folder
+        output_dir = find_latest_session_folder(app.config['OUTPUT_FOLDER'])
+        if output_dir:
+            # Update the session with this folder
+            session['output_dir'] = output_dir
+            app.logger.debug(f"API: Updated session output_dir to latest: {output_dir}")
+    
+    if not output_dir:
+        return jsonify({"error": "No session directory found"}), 404
+    
+    # Load metadata file
+    metadata_path = os.path.join(output_dir, 'metadata.json')
+    if not os.path.exists(metadata_path):
+        return jsonify({"error": "Metadata not found"}), 404
+    
+    with open(metadata_path, 'r') as f:
+        metadata = json.load(f)
+    
+    if sample_id not in metadata:
+        return jsonify({"error": "Sample not found"}), 404
+    
+    return jsonify(metadata[sample_id])
+
+@app.route('/api/search', methods=['POST'])
+def search_api():
+    query = request.json.get('query', '')
+    if not query:
+        return jsonify({"error": "No search query provided"}), 400
+    
+    # Get the output directory path from session
+    output_dir = session.get('output_dir')
+    
+    # Check if we have a session directory
+    if not output_dir or not os.path.exists(output_dir):
+        # If no session directory, find the most recent session folder
+        output_dir = find_latest_session_folder(app.config['OUTPUT_FOLDER'])
+        if output_dir:
+            # Update the session with this folder
+            session['output_dir'] = output_dir
+            app.logger.debug(f"API: Updated session output_dir to latest: {output_dir}")
+    
+    if not output_dir:
+        return jsonify({"error": "No session directory found"}), 404
+    
+    # Load metadata file
+    metadata_path = os.path.join(output_dir, 'metadata.json')
+    if not os.path.exists(metadata_path):
+        return jsonify({"error": "No processed samples found"}), 404
+    
+    with open(metadata_path, 'r') as f:
+        metadata = json.load(f)
+    
+    try:
+        # Search samples using LLM
+        results = search_samples_with_llm(query, metadata)
+        return jsonify({"results": results})
+    except Exception as e:
+        logging.error(f"Error in search: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/visualization-data')
+def visualization_data():
+    # Get the output directory path from session
+    output_dir = session.get('output_dir')
+    
+    # Check if we have a session directory
+    if not output_dir or not os.path.exists(output_dir):
+        # If no session directory, find the most recent session folder
+        output_dir = find_latest_session_folder(app.config['OUTPUT_FOLDER'])
+        if output_dir:
+            # Update the session with this folder
+            session['output_dir'] = output_dir
+            app.logger.debug(f"API: Updated session output_dir to latest: {output_dir}")
+    
+    if not output_dir:
+        return jsonify({"error": "No session directory found"}), 404
+    
+    # Load metadata file
+    metadata_path = os.path.join(output_dir, 'metadata.json')
+    if not os.path.exists(metadata_path):
+        return jsonify({"error": "No processed samples found"}), 404
+    
+    with open(metadata_path, 'r') as f:
+        metadata = json.load(f)
+    
+    # Build category data from directory structure
+    categories = {}
+    samples_info = []
+    
+    # Walk through the output directory to find all the sample files
+    for root, dirs, files in os.walk(output_dir):
+        # Skip the root directory and only look at subdirectories
+        rel_path = os.path.relpath(root, output_dir)
+        if rel_path == '.':
+            continue
+            
+        # Skip the metadata.json file
+        if 'metadata.json' in files:
+            files.remove('metadata.json')
+            
+        # If we're at a mood subdirectory (2 levels deep)
+        parts = rel_path.split(os.path.sep)
+        if len(parts) >= 2:
+            category = parts[0]
+            mood = parts[1]
+            
+            # Add all files in this directory to samples list
+            for file in files:
+                file_path = os.path.join(root, file)
+                sample_info = {
+                    'id': os.path.splitext(file)[0],
+                    'name': file,
+                    'path': '/' + file_path,
+                    'category': category,
+                    'mood': mood,
+                }
+                samples_info.append(sample_info)
+    
+    return jsonify(samples_info)
+
+@app.route('/system/restart', methods=['POST'])
+def restart_app():
+    """Restart the application by redirecting to home page and clearing session"""
+    session.clear()
+    flash("Application restarted successfully", "success")
+    return redirect(url_for('index'))
+
+@app.route('/system/clear-samples', methods=['POST'])
+def clear_samples():
+    """Clear all uploaded and processed samples"""
+    try:
+        # Clear uploads folder
+        if os.path.exists(app.config['UPLOAD_FOLDER']):
+            shutil.rmtree(app.config['UPLOAD_FOLDER'])
+            os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+        
+        # Clear output directory in session
+        output_dir = session.get('output_dir')
+        if output_dir and os.path.exists(output_dir):
+            shutil.rmtree(output_dir)
+            
+        # Clear session
+        session.pop('output_dir', None)
+        
+        flash("All samples have been cleared successfully", "success")
+    except Exception as e:
+        logging.exception(f"Error clearing samples: {str(e)}")
+        flash(f"Error clearing samples: {str(e)}", "error")
+    
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
